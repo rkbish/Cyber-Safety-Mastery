@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ Cyber Safety Mastery – 5 Day Challenge | Codju</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --co-orange:#FF6B1A; --co-orange2:#FF8C42; --co-teal:#00B4A6; --co-teal2:#00D4C4;
+  --co-navy:#1A2E4A; --co-yellow:#FFD23F; --co-purple:#7B5EA7; --co-red:#E63946;
+  --co-green:#2DC653; --co-white:#FFFFFF; --co-offwhite:#F4F7FA; --co-card:#FFFFFF;
+  --co-border:#E2E8F0; --co-text:#1A2E4A; --co-muted:#64748B;
+  --radius-xl:24px; --radius-lg:16px; --radius-md:12px;
+  --shadow-lg:0 12px 40px rgba(26,46,74,0.13); --shadow-md:0 4px 16px rgba(26,46,74,0.10);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:var(--co-offwhite);color:var(--co-text);min-height:100vh;}
+.page-wrap{max-width:900px;margin:0 auto;padding:24px 16px 80px;}
+
+/* TOP BAR */
+.codju-topbar{background:#ffffff;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #e8e8f0;box-shadow:0 2px 10px rgba(100,68,168,0.08);}
+.codju-logo-svg{height:36px;width:auto;}
+.codju-badge{background:#6844A8;color:#fff;font-weight:800;font-size:0.75rem;padding:4px 12px;border-radius:50px;}
+.streak-bar{display:flex;align-items:center;gap:12px;}
+.streak-pill{background:rgba(255,210,63,0.15);border:1.5px solid var(--co-yellow);color:#b8860b;font-weight:800;font-size:0.8rem;padding:3px 10px;border-radius:50px;}
+.points-pill{background:rgba(104,68,168,0.1);border:1.5px solid #6844A8;color:#6844A8;font-weight:800;font-size:0.8rem;padding:3px 10px;border-radius:50px;}
+
+/* HERO */
+.chapter-hero{background:linear-gradient(120deg,var(--co-navy) 0%,#243B5A 60%,#2D4F72 100%);padding:40px 24px 36px;text-align:center;position:relative;overflow:hidden;}
+.chapter-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,107,26,0.18) 0%,transparent 60%),radial-gradient(circle at 20% 80%,rgba(0,180,166,0.18) 0%,transparent 60%);}
+.ch-num{display:inline-block;background:var(--co-orange);color:#fff;font-family:'Fredoka One',cursive;font-size:0.85rem;padding:4px 14px;border-radius:50px;margin-bottom:10px;position:relative;}
+.ch-title{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:#fff;line-height:1.2;position:relative;}
+.ch-title span{color:var(--co-teal2);}
+.ch-sub{color:rgba(255,255,255,0.7);font-size:0.95rem;font-weight:600;margin-top:8px;position:relative;}
+.hero-stats{display:flex;justify-content:center;gap:16px;margin-top:20px;position:relative;flex-wrap:wrap;}
+.hero-stat{background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:var(--radius-md);padding:10px 20px;color:#fff;text-align:center;}
+.hero-stat-num{font-family:'Fredoka One',cursive;font-size:1.6rem;color:var(--co-yellow);}
+.hero-stat-lbl{font-size:0.72rem;font-weight:700;opacity:0.8;text-transform:uppercase;letter-spacing:1px;}
+
+/* MAIN NAV (Day Selector) */
+.day-nav{background:var(--co-white);border-bottom:2px solid var(--co-border);padding:0;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-md);width:100%;}
+.day-nav::-webkit-scrollbar{display:none;}
+.day-btn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 4px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:0.78rem;font-weight:800;color:var(--co-muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;flex:1;min-width:0;}
+.day-btn:hover{color:var(--co-orange);}
+.day-btn.active{color:var(--co-orange);border-bottom-color:var(--co-orange);}
+
+.day-btn .d-lock{font-size:0.7rem;color:var(--co-red);font-weight:700;}
+.day-btn.unlocked .d-lock{color:var(--co-green);} .d-lock.open{color:var(--co-green);}
+
+/* TAB BAR */
+.tab-bar{background:rgba(255,255,255,0.95);border-bottom:1.5px solid var(--co-border);padding:0 12px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;z-index:90;box-shadow:0 2px 8px rgba(26,46,74,0.06);}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{display:flex;align-items:center;gap:5px;padding:11px 14px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:var(--co-muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+.tab-btn:hover{color:var(--co-orange);}
+.tab-btn.active{color:var(--co-orange);border-bottom-color:var(--co-orange);}
+
+/* CARD */
+.card{background:var(--co-card);border-radius:var(--radius-xl);padding:22px;box-shadow:var(--shadow-lg);border:1.5px solid var(--co-border);margin-bottom:16px;}
+
+/* ACTIVITY */
+.activity{display:none;}
+.activity.active{display:block;animation:slideUp 0.35s ease;}
+.day-panel{display:none;}
+.day-panel.active{display:block;}
+
+/* ACT HEADER */
+.act-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.act-icon-wrap{width:52px;height:52px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+.act-icon-wrap.orange{background:linear-gradient(135deg,#FF6B1A,#FF8C42);}
+.act-icon-wrap.teal{background:linear-gradient(135deg,#00B4A6,#00D4C4);}
+.act-icon-wrap.purple{background:linear-gradient(135deg,#7B5EA7,#9B7FC4);}
+.act-icon-wrap.navy{background:linear-gradient(135deg,#1A2E4A,#2D4F72);}
+.act-icon-wrap.yellow{background:linear-gradient(135deg,#FFD23F,#FFE570);}
+.act-icon-wrap.green{background:linear-gradient(135deg,#2DC653,#5EE87A);}
+.act-icon-wrap.red{background:linear-gradient(135deg,#E63946,#FF6B7A);}
+.act-icon-wrap.indigo{background:linear-gradient(135deg,#4F6DF5,#818CF8);}
+.act-label{font-size:0.7rem;font-weight:800;color:var(--co-orange);letter-spacing:1.5px;text-transform:uppercase;}
+.act-title{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--co-navy);}
+.act-sub{font-size:0.85rem;color:var(--co-muted);font-weight:600;margin-top:2px;}
+
+/* CONCEPT BOXES */
+.concept-box{border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:16px;}
+.concept-box.orange{background:#FFF5F0;border-left:4px solid var(--co-orange);}
+.concept-box.teal{background:#F0FAFA;border-left:4px solid var(--co-teal);}
+.concept-box.purple{background:#F5F0FF;border-left:4px solid var(--co-purple);}
+.concept-box.yellow{background:#FFFBF0;border-left:4px solid var(--co-yellow);}
+.concept-box.navy{background:#F0F4F8;border-left:4px solid var(--co-navy);}
+.concept-box.green{background:#F0FFF5;border-left:4px solid var(--co-green);}
+.concept-box.red{background:#FFF0F1;border-left:4px solid var(--co-red);}
+.cb-title{font-family:'Fredoka One',cursive;font-size:1.35rem;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:var(--co-navy);}
+.cb-body{font-size:1.05rem;font-weight:600;color:#334155;line-height:1.9;}
+
+/* TERM GRID */
+.term-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:16px;}
+.term-pill{background:linear-gradient(135deg,#F5F0FF,#EEE8FF);border:1.5px solid var(--co-purple);border-radius:var(--radius-md);padding:10px 14px;}
+.term-pill .tp-word{font-family:'Fredoka One',cursive;font-size:0.95rem;color:var(--co-purple);}
+.term-pill .tp-def{font-size:0.75rem;font-weight:600;color:var(--co-muted);margin-top:3px;line-height:1.4;}
+
+/* ICON TILES */
+.icon-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin:16px 0;}
+.icon-tile{background:var(--co-white);border:1.5px solid var(--co-border);border-radius:var(--radius-lg);padding:16px 12px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;}
+.icon-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.it-ico{font-size:2rem;margin-bottom:8px;}
+.it-name{font-size:0.8rem;font-weight:800;color:var(--co-navy);}
+.it-desc{font-size:0.72rem;font-weight:600;color:var(--co-muted);margin-top:2px;}
+
+/* COMPARE TABLE */
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--radius-lg);overflow:hidden;border:2px solid var(--co-border);}
+.compare-table th{padding:10px 14px;font-family:'Fredoka One',cursive;font-size:1rem;text-align:center;}
+.compare-table th.h-col{background:linear-gradient(135deg,#FF6B1A,#FF8C42);color:#fff;}
+.compare-table th.a-col{background:linear-gradient(135deg,#00B4A6,#00D4C4);color:#fff;}
+.compare-table td{padding:9px 14px;font-size:0.85rem;font-weight:600;text-align:center;border-top:1px solid var(--co-border);}
+.compare-table tr:nth-child(even) td{background:#F8FBFF;}
+
+/* BUTTONS */
+.co-btn{padding:10px 22px;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.88rem;cursor:pointer;transition:all 0.2s;border:2px solid;}
+.co-btn-orange{background:var(--co-orange);border-color:var(--co-orange);color:#fff;}
+.co-btn-orange:hover{background:var(--co-orange2);transform:translateY(-2px);}
+.co-btn-teal{background:var(--co-teal);border-color:var(--co-teal);color:#fff;}
+.co-btn-teal:hover{background:var(--co-teal2);transform:translateY(-2px);}
+.co-btn-outline{background:#fff;border-color:var(--co-border);color:var(--co-muted);}
+.co-btn-outline:hover{border-color:var(--co-navy);color:var(--co-navy);}
+
+/* DAILY MISSION CHECKLIST */
+.mission-card{background:linear-gradient(135deg,#1A2E4A,#243B5A);border-radius:var(--radius-xl);padding:22px;margin-bottom:16px;color:#fff;}
+.mission-title{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--co-yellow);margin-bottom:14px;letter-spacing:0.5px;}
+.mission-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:700;font-size:0.88rem;}
+.mission-item:last-child{border-bottom:none;}
+.mission-check{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;transition:all 0.3s;cursor:pointer;}
+.mission-check.done{background:var(--co-green);animation:popUp 0.3s ease;}
+.mission-bullet{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);font-size:0.72rem;font-weight:900;flex-shrink:0;color:#fff;}
+.mission-text{flex:1;font-size:0.88rem;font-weight:700;color:rgba(255,255,255,0.92);}
+.mission-go-btn{flex-shrink:0;padding:5px 14px;border-radius:50px;border:1.5px solid rgba(255,107,26,0.7);background:rgba(255,107,26,0.2);color:#FF8C42;font-size:0.78rem;font-weight:800;cursor:pointer;transition:all 0.2s;font-family:'Nunito',sans-serif;}
+.mission-go-btn:hover{background:var(--co-orange);color:#fff;border-color:var(--co-orange);}
+
+/* SCAM SIMULATION */
+.scam-screen{background:linear-gradient(135deg,#1A2E4A,#0D1B2A);border-radius:var(--radius-xl);padding:24px;color:#fff;margin-bottom:16px;}
+.scam-title{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--co-red);margin-bottom:4px;}
+.scam-subtitle{font-size:0.82rem;color:rgba(255,255,255,0.6);font-weight:600;margin-bottom:20px;}
+.fake-sms{background:#1E3A2F;border:1.5px solid #2DC653;border-radius:var(--radius-lg);padding:16px;margin-bottom:16px;font-size:0.88rem;line-height:1.7;position:relative;}
+.fake-sms::before{content:'📱 SMS';position:absolute;top:-10px;left:14px;background:#2DC653;color:#fff;font-size:0.7rem;font-weight:800;padding:2px 8px;border-radius:50px;}
+.fake-email{background:#1A1A3E;border:1.5px solid #4F6DF5;border-radius:var(--radius-lg);padding:16px;margin-bottom:16px;font-size:0.88rem;line-height:1.7;position:relative;}
+.fake-email::before{content:'✉️ Email';position:absolute;top:-10px;left:14px;background:#4F6DF5;color:#fff;font-size:0.7rem;font-weight:800;padding:2px 8px;border-radius:50px;}
+.fake-call{background:#2A1A0A;border:1.5px solid var(--co-orange);border-radius:var(--radius-lg);padding:16px;margin-bottom:16px;font-size:0.88rem;line-height:1.7;position:relative;}
+.fake-call::before{content:'📞 Phone Call';position:absolute;top:-10px;left:14px;background:var(--co-orange);color:#fff;font-size:0.7rem;font-weight:800;padding:2px 8px;border-radius:50px;}
+.red-flags{background:#3A0A0A;border:1.5px solid var(--co-red);border-radius:var(--radius-md);padding:14px;margin:14px 0;}
+.red-flags-title{font-family:'Fredoka One',cursive;font-size:0.95rem;color:var(--co-red);margin-bottom:8px;}
+.red-flag-item{font-size:0.82rem;color:rgba(255,255,255,0.85);font-weight:600;padding:3px 0;display:flex;align-items:flex-start;gap:6px;}
+.scam-choices{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.scam-opt{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);border-radius:var(--radius-md);padding:12px 16px;font-size:0.88rem;font-weight:700;color:#fff;cursor:pointer;transition:all 0.2s;text-align:left;}
+.scam-opt:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);}
+.scam-opt.scam-right{background:rgba(45,198,83,0.2);border-color:var(--co-green);color:var(--co-green);}
+.scam-opt.scam-wrong{background:rgba(230,57,70,0.2);border-color:var(--co-red);color:var(--co-red);}
+.scam-explain{background:rgba(45,198,83,0.15);border:1.5px solid var(--co-green);border-radius:var(--radius-md);padding:14px;margin-top:14px;font-size:0.88rem;font-weight:700;color:rgba(255,255,255,0.9);display:none;}
+.scam-explain.show{display:block;animation:slideUp 0.3s ease;}
+.scam-nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;}
+
+/* QUIZ */
+.quiz-wrap{max-width:640px;margin:0 auto;}
+.q-progress-bar{height:6px;background:var(--co-border);border-radius:3px;margin-bottom:16px;overflow:hidden;}
+.q-progress-fill{height:100%;background:linear-gradient(90deg,var(--co-orange),var(--co-teal));border-radius:3px;transition:width 0.5s ease;}
+.q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.q-level{background:var(--co-navy);color:var(--co-yellow);font-size:0.72rem;font-weight:800;padding:3px 10px;border-radius:50px;}
+.q-counter{font-size:0.82rem;font-weight:800;color:var(--co-muted);}
+.q-score-badge{background:var(--co-yellow);color:var(--co-navy);font-size:0.8rem;font-weight:800;padding:3px 10px;border-radius:50px;}
+.q-card{background:var(--co-white);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-lg);border:1.5px solid var(--co-border);}
+.q-emoji{font-size:2.5rem;text-align:center;margin-bottom:10px;}
+.q-text{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--co-navy);line-height:1.4;text-align:center;margin-bottom:20px;}
+.opt-btn{width:100%;padding:12px 18px;margin-bottom:8px;border-radius:var(--radius-md);border:2px solid var(--co-border);background:var(--co-white);font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:700;color:var(--co-text);cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;transition:all 0.2s;}
+.opt-btn:hover:not(:disabled){border-color:var(--co-orange);background:#FFF5F0;transform:translateX(4px);}
+.opt-btn.right{background:#F0FFF5;border-color:var(--co-green);color:var(--co-green);}
+.opt-btn.wrong{background:#FFF0F1;border-color:var(--co-red);color:var(--co-red);animation:shake 0.4s ease;}
+.opt-icon{font-size:1.1rem;}
+.q-feedback{padding:12px 16px;border-radius:var(--radius-md);font-size:0.88rem;font-weight:700;margin-top:12px;display:none;}
+.q-feedback.show{display:block;animation:slideUp 0.3s ease;}
+.q-feedback.ok{background:#F0FFF5;border:1.5px solid var(--co-green);color:#1A5C2E;}
+.q-feedback.no{background:#FFF0F1;border:1.5px solid var(--co-red);color:#7A0A10;}
+#qNextBtn{margin-top:14px;}
+.q-dots{display:flex;gap:6px;justify-content:center;margin:16px 0;flex-wrap:wrap;}
+.q-dot{width:10px;height:10px;border-radius:50%;background:var(--co-border);transition:all 0.3s;}
+.q-dot.curr{background:var(--co-orange);transform:scale(1.3);}
+.q-dot.ok{background:var(--co-green);}
+.q-dot.no{background:var(--co-red);}
+.q-score-screen{text-align:center;padding:30px 20px;}
+.qs-trophy{font-size:4rem;margin-bottom:10px;animation:popUp 0.5s ease;}
+.qs-big{font-family:'Fredoka One',cursive;font-size:3.5rem;color:var(--co-orange);}
+.qs-total{font-size:1rem;font-weight:700;color:var(--co-muted);}
+.qs-stars{font-size:2rem;margin:10px 0;}
+.qs-msg{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--co-navy);margin-bottom:20px;}
+
+/* FILL BLANKS */
+.fitb-sentence{font-size:1rem;font-weight:700;color:var(--co-navy);line-height:2.2;margin-bottom:12px;padding:14px;background:var(--co-offwhite);border-radius:var(--radius-md);}
+.fitb-blank{display:inline-block;min-width:120px;border-bottom:2.5px solid var(--co-orange);padding:2px 8px;cursor:pointer;border-radius:4px;font-weight:800;color:var(--co-orange);text-align:center;transition:all 0.2s;background:rgba(255,107,26,0.06);}
+.fitb-blank.correct{background:#F0FFF5;border-color:var(--co-green);color:var(--co-green);}
+.fitb-blank.wrong{background:#FFF0F1;border-color:var(--co-red);animation:shake 0.4s ease;}
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--co-offwhite);border-radius:var(--radius-lg);border:1.5px dashed var(--co-border);margin-bottom:14px;}
+.wb-chip{padding:6px 14px;background:var(--co-white);border:1.5px solid var(--co-purple);border-radius:50px;font-size:0.83rem;font-weight:800;color:var(--co-purple);cursor:pointer;transition:all 0.2s;}
+.wb-chip:hover{background:#F5F0FF;transform:translateY(-2px);}
+.wb-chip.used{opacity:0.3;pointer-events:none;}
+#fitbScore{text-align:center;font-weight:800;font-size:1rem;padding:8px;color:var(--co-navy);min-height:30px;}
+
+/* TRUE/FALSE */
+.tf-item{background:var(--co-white);border:1.5px solid var(--co-border);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px;}
+.tf-stmt{font-size:0.92rem;font-weight:700;color:var(--co-navy);margin-bottom:10px;line-height:1.5;}
+.tf-btns{display:flex;gap:8px;}
+.tf-btn{flex:1;padding:9px;border-radius:var(--radius-md);border:2px solid var(--co-border);background:var(--co-white);font-weight:800;font-size:0.88rem;cursor:pointer;transition:all 0.2s;}
+.tf-btn.t-btn:hover{border-color:var(--co-green);background:#F0FFF5;color:var(--co-green);}
+.tf-btn.f-btn:hover{border-color:var(--co-red);background:#FFF0F1;color:var(--co-red);}
+.tf-btn.right-ans{background:var(--co-green);border-color:var(--co-green);color:#fff;}
+.tf-btn.wrong-ans{background:var(--co-red);border-color:var(--co-red);color:#fff;}
+.tf-exp{font-size:0.8rem;font-weight:600;color:var(--co-muted);margin-top:8px;padding:8px;background:var(--co-offwhite);border-radius:var(--radius-md);display:none;}
+.tf-exp.show{display:block;animation:slideUp 0.3s ease;}
+#tfScore{font-family:'Fredoka One',cursive;font-size:1.2rem;text-align:center;padding:10px;color:var(--co-navy);min-height:36px;}
+
+/* SORT */
+.sort-pool{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--co-offwhite);border-radius:var(--radius-lg);border:1.5px dashed var(--co-border);margin-bottom:16px;min-height:54px;}
+.sort-chip{padding:7px 14px;background:var(--co-white);border:1.5px solid var(--co-navy);border-radius:50px;font-size:0.82rem;font-weight:800;color:var(--co-navy);cursor:grab;user-select:none;transition:all 0.2s;}
+.sort-chip:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.sort-chip:active{cursor:grabbing;}
+.sort-bins{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.sort-bin{border-radius:var(--radius-lg);padding:14px;min-height:100px;transition:all 0.2s;border:2px dashed var(--co-border);}
+.sort-bin.bin-orange{background:#FFF5F0;border-color:var(--co-orange);}
+.sort-bin.bin-teal{background:#F0FAFA;border-color:var(--co-teal);}
+.sort-bin.drag-over{transform:scale(1.02);box-shadow:var(--shadow-md);}
+.bin-label{font-family:'Fredoka One',cursive;font-size:0.95rem;margin-bottom:8px;}
+.bin-label.orange{color:var(--co-orange);}
+.bin-label.teal{color:var(--co-teal);}
+.dropped-chip{display:flex;align-items:center;justify-content:space-between;padding:5px 10px;margin:4px 0;border-radius:50px;font-size:0.8rem;font-weight:700;}
+.right-drop{background:#F0FFF5;border:1.5px solid var(--co-green);color:var(--co-green);}
+.wrong-drop{background:#FFF0F1;border:1.5px solid var(--co-red);color:var(--co-red);}
+.rm-btn{background:none;border:none;cursor:pointer;font-size:0.75rem;opacity:0.6;padding:0 2px;}
+#sortResult{text-align:center;font-weight:800;font-size:1rem;color:var(--co-navy);padding:8px;min-height:30px;}
+
+/* MATCH */
+.match-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.match-left-item,.match-right-item{padding:10px 14px;border:2px solid var(--co-border);border-radius:var(--radius-md);cursor:pointer;font-size:0.85rem;font-weight:700;transition:all 0.2s;text-align:center;background:var(--co-white);}
+.match-left-item:hover,.match-right-item:hover{border-color:var(--co-orange);background:#FFF5F0;}
+.match-left-item.sel{border-color:var(--co-orange);background:#FFF5F0;box-shadow:0 0 0 3px rgba(255,107,26,0.15);}
+.match-right-item.sel{border-color:var(--co-teal);background:#F0FAFA;}
+.match-left-item.matched{background:#F0FFF5;border-color:var(--co-green);color:var(--co-green);pointer-events:none;}
+.match-right-item.matched{background:#F0FFF5;border-color:var(--co-green);color:var(--co-green);pointer-events:none;}
+.match-left-item.shk,.match-right-item.shk{animation:shake 0.4s ease;}
+.match-result{text-align:center;font-weight:800;font-size:1rem;color:var(--co-navy);padding:8px;min-height:30px;}
+.match-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+
+/* WORD SCRAMBLE */
+.scr-box{text-align:center;padding:20px;}
+.scr-word{font-family:'Fredoka One',cursive;font-size:2.5rem;color:var(--co-orange);letter-spacing:8px;margin-bottom:8px;}
+.scr-hint{font-size:0.85rem;font-weight:600;color:var(--co-muted);margin-bottom:16px;}
+.scr-input{border:2.5px solid var(--co-border);border-radius:var(--radius-lg);padding:12px 18px;font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;text-align:center;width:100%;max-width:300px;outline:none;transition:border-color 0.2s;}
+.scr-input:focus{border-color:var(--co-orange);}
+.scr-msg{margin-top:10px;font-size:0.95rem;font-weight:800;min-height:28px;}
+.scr-msg.ok{color:var(--co-green);}
+.scr-msg.no{color:var(--co-red);}
+.scr-msg.rev{color:var(--co-purple);}
+.scr-progress{font-size:0.8rem;font-weight:700;color:var(--co-muted);}
+
+/* SCENARIOS */
+.scenario-card{background:var(--co-white);border:1.5px solid var(--co-border);border-radius:var(--radius-xl);padding:20px;margin-bottom:16px;}
+.scenario-q{font-size:0.95rem;font-weight:700;color:var(--co-navy);line-height:1.6;margin-bottom:14px;display:flex;gap:10px;}
+.sq-num{background:var(--co-navy);color:#fff;font-family:'Fredoka One',cursive;font-size:0.8rem;padding:3px 9px;border-radius:50px;flex-shrink:0;height:fit-content;}
+.scenario-opt{padding:10px 14px;border:1.5px solid var(--co-border);border-radius:var(--radius-md);margin-bottom:8px;font-size:0.88rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.scenario-opt:hover{border-color:var(--co-orange);background:#FFF5F0;}
+.scenario-opt.picked-right{background:#F0FFF5;border-color:var(--co-green);color:var(--co-green);}
+.scenario-opt.picked-wrong{background:#FFF0F1;border-color:var(--co-red);color:var(--co-red);}
+.scenario-opt.show-right{background:#F0FFF5;border-color:var(--co-green);color:var(--co-green);}
+.scenario-explain{font-size:0.82rem;font-weight:600;color:#334155;padding:10px;background:var(--co-offwhite);border-radius:var(--radius-md);display:none;margin-top:6px;line-height:1.6;}
+.scenario-explain.show{display:block;animation:slideUp 0.3s ease;}
+
+/* CERTIFICATE */
+.cert-wrap{background:linear-gradient(135deg,#fff9f0,#f0faff);border:3px solid var(--co-orange);border-radius:var(--radius-xl);padding:32px;text-align:center;position:relative;overflow:hidden;}
+.cert-wrap::before{content:'';position:absolute;inset:8px;border:1.5px solid rgba(255,107,26,0.3);border-radius:18px;pointer-events:none;}
+.cert-logo{font-family:'Fredoka One',cursive;font-size:2rem;color:var(--co-orange);margin-bottom:4px;}
+.cert-logo span{color:var(--co-teal);}
+.cert-tag{font-size:0.75rem;font-weight:800;color:var(--co-muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;}
+.cert-award{font-size:0.85rem;font-weight:700;color:var(--co-muted);margin-bottom:8px;}
+.cert-name{font-family:'Fredoka One',cursive;font-size:2.2rem;color:var(--co-navy);border-bottom:2.5px solid var(--co-orange);display:inline-block;padding-bottom:4px;margin-bottom:14px;}
+.cert-course{font-size:1rem;font-weight:700;color:var(--co-navy);margin-bottom:6px;}
+.cert-score{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--co-orange);margin:14px 0;}
+.cert-badge-row{display:flex;justify-content:center;gap:10px;margin:14px 0;flex-wrap:wrap;}
+.cert-badge{background:var(--co-navy);color:#fff;font-size:0.75rem;font-weight:800;padding:5px 12px;border-radius:50px;}
+.cert-id{font-size:0.72rem;font-weight:700;color:var(--co-muted);margin-top:14px;}
+.cert-helpline{background:var(--co-red);color:#fff;border-radius:var(--radius-lg);padding:12px 20px;margin:16px 0;font-family:'Fredoka One',cursive;font-size:1.1rem;}
+.cert-input-name{border:2px solid var(--co-border);border-radius:var(--radius-lg);padding:12px 18px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;width:100%;max-width:360px;outline:none;margin-bottom:10px;transition:border-color 0.2s;}
+.cert-input-name:focus{border-color:var(--co-orange);}
+
+/* PROGRESS DASHBOARD */
+.progress-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:16px;}
+.progress-stat{background:var(--co-white);border:1.5px solid var(--co-border);border-radius:var(--radius-lg);padding:16px;text-align:center;}
+.ps-num{font-family:'Fredoka One',cursive;font-size:2rem;}
+.ps-lbl{font-size:0.75rem;font-weight:800;color:var(--co-muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.day-progress-row{display:flex;align-items:center;gap:12px;padding:12px;background:var(--co-white);border:1.5px solid var(--co-border);border-radius:var(--radius-lg);margin-bottom:8px;}
+.dp-icon{width:40px;height:40px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.dp-bar-wrap{flex:1;}
+.dp-label{font-size:0.82rem;font-weight:800;color:var(--co-navy);}
+.dp-bar{height:6px;background:var(--co-border);border-radius:3px;margin-top:5px;overflow:hidden;}
+.dp-bar-fill{height:100%;border-radius:3px;transition:width 0.8s ease;}
+.dp-pct{font-size:0.75rem;font-weight:700;color:var(--co-muted);}
+
+/* BADGE RACK */
+.badge-rack{display:flex;flex-wrap:wrap;gap:10px;}
+.badge-item{padding:8px 14px;border-radius:50px;font-size:0.8rem;font-weight:800;border:1.5px solid;}
+.badge-item.earned{background:linear-gradient(135deg,var(--co-yellow),#FFE570);border-color:var(--co-orange);color:var(--co-navy);}
+.badge-item.locked{background:var(--co-offwhite);border-color:var(--co-border);color:var(--co-muted);opacity:0.6;}
+
+/* HELPLINE BANNER */
+.helpline-banner{background:linear-gradient(135deg,var(--co-red),#C0392B);color:#fff;border-radius:var(--radius-xl);padding:20px 24px;text-align:center;margin:16px 0;}
+.hb-num{font-family:'Fredoka One',cursive;font-size:2.5rem;letter-spacing:4px;}
+.hb-lbl{font-size:0.9rem;font-weight:700;opacity:0.9;margin-top:4px;}
+
+/* CONCEPT SLIDER */
+.concept-slider{position:relative;}
+.concept-slide{display:none;animation:slideUp 0.35s ease;}
+.concept-slide.active{display:block;}
+.slide-progress-bar{height:5px;background:var(--co-border);border-radius:3px;margin-bottom:18px;overflow:hidden;}
+.slide-progress-fill{height:100%;background:linear-gradient(90deg,#6844A8,var(--co-teal));border-radius:3px;transition:width 0.4s ease;}
+.slide-counter{font-size:0.85rem;font-weight:800;color:var(--co-muted);text-align:center;margin-bottom:14px;letter-spacing:0.5px;}
+.slide-dots{display:flex;gap:6px;justify-content:center;margin:16px 0 10px;}
+.slide-dot{width:9px;height:9px;border-radius:50%;background:var(--co-border);cursor:pointer;transition:all 0.3s;}
+.slide-dot.active{background:#6844A8;transform:scale(1.3);}
+.slide-dot.done{background:var(--co-teal);}
+.slide-nav{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:14px;border-top:1.5px solid var(--co-border);}
+.slide-nav-btn{display:flex;align-items:center;gap:6px;padding:10px 20px;border-radius:50px;border:2px solid;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.88rem;cursor:pointer;transition:all 0.2s;}
+.slide-prev-btn{background:#fff;border-color:var(--co-border);color:var(--co-muted);}
+.slide-prev-btn:hover:not(:disabled){border-color:#6844A8;color:#6844A8;}
+.slide-prev-btn:disabled{opacity:0.35;cursor:not-allowed;}
+.slide-next-btn{background:#6844A8;border-color:#6844A8;color:#fff;}
+.slide-next-btn:hover{background:#7B5EA7;transform:translateY(-2px);}
+.slide-finish-btn{background:var(--co-orange);border-color:var(--co-orange);color:#fff;}
+.slide-finish-btn:hover{background:var(--co-orange2);transform:translateY(-2px);}
+
+/* ANIMATIONS */
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popUp{0%{transform:scale(0.85)}80%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fall{0%{opacity:1;transform:translateY(-20px) rotate(0deg)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+.conf-p{position:absolute;border-radius:2px;animation:fall linear forwards;}
+
+/* MISC */
+.section-title{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--co-navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.wb-label{font-size:0.72rem;font-weight:800;color:var(--co-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.t-ico{font-size:1rem;}
+.center{text-align:center;}
+.mt8{margin-top:8px;}
+.mt16{margin-top:16px;}
+.gap8{gap:8px;}
+.flex-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+
+@media(max-width:520px){
+  .sort-bins,.match-wrap,.progress-grid,.icon-tiles,.term-grid{grid-template-columns:1fr;}
+  .ch-title{font-size:1.6rem;}
+  .match-columns{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- CONFETTI -->
+<div id="confWrap" style="position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden"></div>
+
+<!-- TOP BAR -->
+<div class="codju-topbar">
+  <!-- Codju Official Logo -->
+  <svg class="codju-logo-svg" viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="54" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="60" font-weight="900" fill="#6844A8">codju</text>
+    <!-- Green leaf on j -->
+    <ellipse cx="152" cy="8" rx="8" ry="5" fill="#4CAF50" transform="rotate(-30 152 8)"/>
+    <ellipse cx="156" cy="5" rx="5" ry="3" fill="#66BB6A" transform="rotate(-30 156 5)"/>
+  </svg>
+  <div class="streak-bar">
+    <div class="streak-pill">🔥 Streak: <span id="streakCount">0</span></div>
+    <div class="points-pill">⭐ <span id="totalPoints">0</span> pts</div>
+  </div>
+  <div class="codju-badge">Cyber Safety · Grades 4–10</div>
+</div>
+
+<!-- HERO -->
+<div class="chapter-hero">
+  <div class="ch-num">5-Day Challenge</div>
+  <div class="ch-title">Cyber Safety <span>Mastery</span></div>
+  <div class="ch-sub">Learn · Detect Scams · Stay Safe Online · Get Certified</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-lbl">Days</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-lbl">Simulations</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">50+</div><div class="hero-stat-lbl">Activities</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">🏆</div><div class="hero-stat-lbl">Certificate</div></div>
+  </div>
+</div>
+
+<!-- DAY NAVIGATION -->
+<div class="day-nav">
+  <button class="day-btn unlocked active" onclick="switchDay(0,this)">
+    <span>Day 1</span><span class="d-lock open">Open</span>
+  </button>
+  <button class="day-btn" id="dayBtn1" onclick="switchDay(1,this)">
+    <span>Day 2</span><span class="d-lock" id="lock1">Locked</span>
+  </button>
+  <button class="day-btn" id="dayBtn2" onclick="switchDay(2,this)">
+    <span>Day 3</span><span class="d-lock" id="lock2">Locked</span>
+  </button>
+  <button class="day-btn" id="dayBtn3" onclick="switchDay(3,this)">
+    <span>Day 4</span><span class="d-lock" id="lock3">Locked</span>
+  </button>
+  <button class="day-btn" id="dayBtn4" onclick="switchDay(4,this)">
+    <span>Day 5</span><span class="d-lock" id="lock4">Locked</span>
+  </button>
+  <button class="day-btn unlocked" onclick="switchDay(5,this)">
+    <span>Progress</span><span class="d-lock open">Open</span>
+  </button>
+  <button class="day-btn unlocked" onclick="switchDay(6,this)">
+    <span>Certificate</span><span class="d-lock open">Open</span>
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════ DAY 1 ═══════════════════════════════════════════ -->
+<div class="day-panel active" id="dayPanel0">
+
+  <!-- DAY 1 TAB BAR -->
+  <div class="tab-bar" id="tabBar0">
+    <button class="tab-btn active" onclick="showDayTab(0,0,this)">Learn</button>
+    <button class="tab-btn" onclick="showDayTab(0,1,this)">Mission</button>
+    <button class="tab-btn" onclick="showDayTab(0,2,this)">True/False</button>
+    <button class="tab-btn" onclick="showDayTab(0,3,this)">Sort It</button>
+    <button class="tab-btn" onclick="showDayTab(0,4,this)">Scam Sim</button>
+    <button class="tab-btn" onclick="showDayTab(0,5,this)">Quiz</button>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- D1 TAB 0: LEARN (Concept Slider) -->
+    <div class="activity active" id="d0-tab-0">
+      <div class="act-header">
+        <div class="act-icon-wrap navy">🌐</div>
+        <div class="act-meta">
+          <div class="act-label">Day 1 · Read First</div>
+          <div class="act-title">Internet Safety & Digital Footprint</div>
+          <div class="act-sub">10 concepts · Use Next to go through each one</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slide-progress-bar"><div class="slide-progress-fill" id="d1LearnBar" style="width:10%"></div></div>
+        <div class="slide-counter" id="d1LearnCounter">Concept 1 of 6</div>
+        <div class="concept-slider" id="d1LearnSlider">
+
+          <div class="concept-slide active" id="d1s0">
+            <div class="concept-box orange">
+              <div class="cb-title">🌐 What is the Internet?</div>
+              <div class="cb-body">The internet is a giant global network connecting millions of computers, phones, and devices worldwide.<br><br>It lets us share information, communicate, shop, learn, and play — but it also has risks if we are not careful.</div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s1">
+            <div class="concept-box orange">
+              <div class="cb-title">🌐 How Do We Use the Internet?</div>
+              <div class="cb-body">We use the internet every single day:</div>
+            </div>
+            <div class="icon-tiles" style="margin-top:16px;">
+              <div class="icon-tile"><div class="it-ico">📧</div><div class="it-name">Email</div><div class="it-desc">Sending messages</div></div>
+              <div class="icon-tile"><div class="it-ico">🎮</div><div class="it-name">Gaming</div><div class="it-desc">Online multiplayer</div></div>
+              <div class="icon-tile"><div class="it-ico">📱</div><div class="it-name">Social Media</div><div class="it-desc">Connecting people</div></div>
+              <div class="icon-tile"><div class="it-ico">🛒</div><div class="it-name">Shopping</div><div class="it-desc">Buying online</div></div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s2">
+            <div class="concept-box teal">
+              <div class="cb-title">👣 What is a Digital Footprint?</div>
+              <div class="cb-body">A digital footprint is all the data you leave behind when using the internet.<br><br>Every time you go online, you leave a trail — even when you think you are just browsing quietly!</div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s3">
+            <div class="concept-box teal">
+              <div class="cb-title">👣 What Makes Up Your Footprint?</div>
+              <div class="cb-body">
+                📸 Photos and videos you post<br><br>
+                💬 Comments and messages you write<br><br>
+                🎮 Games you play online<br><br>
+                🌐 Websites you visit<br><br>
+                <strong>⚠️ It never truly disappears — even deleted posts can be seen by others!</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s4">
+            <div class="concept-box purple">
+              <div class="cb-title">🔒 What is Personal Data?</div>
+              <div class="cb-body">Personal data is information that identifies YOU specifically.<br><br><strong>Never share these online with strangers!</strong></div>
+            </div>
+            <div class="term-grid" style="margin-top:16px;">
+              <div class="term-pill"><div class="tp-word">👤 Full Name</div><div class="tp-def">Your complete name</div></div>
+              <div class="term-pill"><div class="tp-word">🏠 Address</div><div class="tp-def">Where you live</div></div>
+              <div class="term-pill"><div class="tp-word">📱 Phone</div><div class="tp-def">Your mobile number</div></div>
+              <div class="term-pill"><div class="tp-word">🏫 School</div><div class="tp-def">Name of your school</div></div>
+              <div class="term-pill"><div class="tp-word">🎂 Birthday</div><div class="tp-def">Your date of birth</div></div>
+              <div class="term-pill"><div class="tp-word">🔑 Password</div><div class="tp-def">Account passwords</div></div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s5">
+            <div class="concept-box green">
+              <div class="cb-title">✅ Safe Online Rules (Part 1)</div>
+              <div class="cb-body">
+                🟢 Use a <strong>strong, unique password</strong> for every account<br><br>
+                🟢 Never share your address or phone number online<br><br>
+                🟢 Only accept friend requests from people you know in real life
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s6">
+            <div class="concept-box green">
+              <div class="cb-title">✅ Safe Online Rules (Part 2)</div>
+              <div class="cb-body">
+                🟢 Tell a trusted adult if something online makes you uncomfortable<br><br>
+                🟢 Log out of accounts after use on shared computers<br><br>
+                🔴 Never meet someone you only know from the internet without a parent
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s7">
+            <div class="concept-box yellow">
+              <div class="cb-title">⚠️ Unsafe Actions — Watch Out! (Part 1)</div>
+              <div class="cb-body">
+                🔴 Sharing your school name, address, or photo with strangers<br><br>
+                🔴 Clicking on pop-up ads that say <strong>"You've WON a prize!"</strong> — always a scam!<br><br>
+                🔴 Downloading apps or files from unknown, unofficial websites
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s8">
+            <div class="concept-box yellow">
+              <div class="cb-title">⚠️ Unsafe Actions — Watch Out! (Part 2)</div>
+              <div class="cb-body">
+                🔴 Responding to messages from unknown numbers claiming to be from banks<br><br>
+                🔴 Using the same password for all your accounts<br><br>
+                🔴 Sharing your location with people you don't know in real life
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-slide" id="d1s9">
+            <div class="section-title" style="font-size:1.1rem;margin-bottom:16px;">📚 Key Vocabulary</div>
+            <div class="term-grid">
+              <div class="term-pill"><div class="tp-word">🌐 Digital Footprint</div><div class="tp-def">Data trail you leave online</div></div>
+              <div class="term-pill"><div class="tp-word">🔒 Personal Data</div><div class="tp-def">Info that identifies you uniquely</div></div>
+              <div class="term-pill"><div class="tp-word">🕵️ Cybercriminal</div><div class="tp-def">Someone who commits internet crimes</div></div>
+              <div class="term-pill"><div class="tp-word">🛡️ Cyber Safety</div><div class="tp-def">Practices to protect yourself online</div></div>
+              <div class="term-pill"><div class="tp-word">🤫 Privacy</div><div class="tp-def">Right to keep personal info secure</div></div>
+              <div class="term-pill"><div class="tp-word">🔐 Encryption</div><div class="tp-def">Scrambling data so only you can read it</div></div>
+            </div>
+          </div>
+
+        </div><!-- /concept-slider -->
+
+        <div class="slide-dots" id="d1LearnDots"></div>
+        <div class="slide-nav">
+          <button class="slide-nav-btn slide-prev-btn" id="d1PrevBtn" onclick="d1SlideNav(-1)" disabled>← Prev</button>
+          <button class="slide-nav-btn slide-next-btn" id="d1NextBtn" onclick="d1SlideNav(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- D1 TAB 1: MISSION CHECKLIST -->
+    <div class="activity" id="d0-tab-1">
+      <div class="act-header">
+        <div class="act-icon-wrap orange">🎯</div>
+        <div class="act-meta">
+          <div class="act-label">Day 1 · Your Mission</div>
+          <div class="act-title">Daily Mission Checklist</div>
+          <div class="act-sub">Complete all tasks to unlock Day 2!</div>
+        </div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-title">DAY 1 GOAL — Internet Safety</div>
+        <div class="mission-item">
+          <div class="mission-check" id="mc-d1-1" onclick="toggleMission('d1-1',10)">☐</div>
+          <span class="mission-bullet">1</span>
+          <span class="mission-text">Read Internet Safety &amp; Digital Footprint concepts</span>
+          <button class="mission-go-btn" onclick="showDayTab(0,0,document.querySelectorAll('#tabBar0 .tab-btn')[0]);toggleMission('d1-1',0)">Go →</button>
+        </div>
+        <div class="mission-item">
+          <div class="mission-check" id="mc-d1-2" onclick="toggleMission('d1-2',15)">☐</div>
+          <span class="mission-bullet">2</span>
+          <span class="mission-text">Complete the True/False activity</span>
+          <button class="mission-go-btn" onclick="showDayTab(0,2,document.querySelectorAll('#tabBar0 .tab-btn')[2]);toggleMission('d1-2',0)">Go →</button>
+        </div>
+        <div class="mission-item">
+          <div class="mission-check" id="mc-d1-3" onclick="toggleMission('d1-3',20)">☐</div>
+          <span class="mission-bullet">3</span>
+          <span class="mission-text">Sort safe vs unsafe online actions</span>
+          <button class="mission-go-btn" onclick="showDayTab(0,3,document.querySelectorAll('#tabBar0 .tab-btn')[3]);toggleMission('d1-3',0)">Go →</button>
+        </div>
+        <div class="mission-item">
+          <div class="mission-check" id="mc-d1-4" onclick="toggleMission('d1-4',25)">☐</div>
+          <span class="mission-bullet">4</span>
+          <span class="mission-text">Complete the KYC Scam Simulation</span>
+          <button class="mission-go-btn" onclick="showDayTab(0,4,document.querySelectorAll('#tabBar0 .tab-btn')[4]);toggleMission('d1-4',0)">Go →</button>
+        </div>
+        <div class="mission-item">
+          <div class="mission-check" id="mc-d1-5" onclick="toggleMission('d1-5',30)">☐</div>
+          <span class="mission-bullet">5</span>
+          <span class="mission-text">Pass the Day 1 Quiz</span>
+          <button class="mission-go-btn" onclick="showDayTab(0,5,document.querySelectorAll('#tabBar0 .tab-btn')[5]);toggleMission('d1-5',0)">Go →</button>
+        </div>
+      </div>
+      <div class="card" id="day1CompletionCard" style="display:none;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:10px;">🎉</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--co-green);">Day 1 Complete!</div>
+        <div style="font-size:0.9rem;font-weight:600;color:var(--co-muted);margin:8px 0 16px;">You earned the <strong>🛡️ Safety Starter</strong> badge!</div>
+        <button class="co-btn co-btn-teal" onclick="unlockDay(1)">🔓 Unlock Day 2 →</button>
+      </div>
+    </div>
+
+    <!-- D1 TAB 2: TRUE/FALSE -->
+    <div class="activity" id="d0-tab-2">
+      <div class="act-header">
+        <div class="act-icon-wrap teal">✅</div>
+        <div class="act-meta">
+          <div class="act-label">Activity 1</div>
+          <div class="act-title">True or False?</div>
+          <div class="act-sub">Tap TRUE or FALSE for each statement about internet safety</div>
+        </div>
+      </div>
+      <div class="card" id="d1TfContainer"></div>
+      <div class="card" style="text-align:center"><div id="d1tfScore" class="co-btn" style="pointer-events:none;background:var(--co-offwhite);border-color:var(--co-border);color:var(--co-muted);">Complete all to see your score</div></div>
+    </div>
+
+    <!-- D1 TAB 3: SORT IT -->
+    <div class="activity" id="d0-tab-3">
+      <div class="act-header">
+        <div class="act-icon-wrap purple">🔀</div>
+        <div class="act-meta">
+          <div class="act-label">Activity 2</div>
+          <div class="act-title">Sort It! — Safe vs Unsafe</div>
+          <div class="act-sub">Drag each action into the correct category</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title">🃏 Drag these actions:</div>
+        <div class="sort-pool" id="d1SortPool"></div>
+        <div class="sort-bins" id="d1SortBins">
+          <div class="sort-bin bin-teal" id="d1BinSafe" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="doD1Sort(event,'safe')">
+            <div class="bin-label teal">✅ SAFE Online Action</div>
+          </div>
+          <div class="sort-bin bin-orange" id="d1BinUnsafe" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="doD1Sort(event,'unsafe')">
+            <div class="bin-label orange">❌ UNSAFE Online Action</div>
+          </div>
+        </div>
+        <div id="d1SortResult" style="text-align:center;font-weight:800;font-size:1rem;color:var(--co-navy);padding:8px;min-height:30px;"></div>
+        <button class="co-btn co-btn-outline" onclick="resetD1Sort()">🔄 Reset</button>
+      </div>
+    </div>
+
+    <!-- D1 TAB 4: SCAM SIMULATION 1 — Fake KYC -->
+    <div class="activity" id="d0-tab-4">
+      <div class="act-header">
+        <div class="act-icon-wrap red">🎭</div>
+        <div class="act-meta">
+          <div class="act-label">Scam Simulation #1</div>
+          <div class="act-title">Fake KYC Update SMS</div>
+          <div class="act-sub">Read the message carefully — what would you do?</div>
+        </div>
+      </div>
+      <div class="scam-screen">
+        <div class="scam-title">⚠️ REAL INDIAN SCAM ALERT</div>
+        <div class="scam-subtitle">This is a simulation. No real data is at risk. Learn to identify this scam!</div>
+        <div class="fake-sms" style="margin-top:24px;">
+          <strong>SENDER: SBI-KYCUPD</strong><br><br>
+          Dear Customer, Your SBI account will be <span style="color:#FF6B7A;font-weight:900;">BLOCKED within 24 HOURS</span> due to incomplete KYC. Update NOW: <span style="color:#4F6DF5;text-decoration:underline;">http://sbi-kyc-update.xyz/login</span><br><br>
+          Call: <span style="color:#FFD23F;">+91-9876543210</span> to avoid account suspension. — SBI Customer Care
+        </div>
+        <div class="red-flags">
+          <div class="red-flags-title">🚩 Red Flags in This Message:</div>
+          <div class="red-flag-item">🚩 Real banks NEVER send KYC update links via SMS</div>
+          <div class="red-flag-item">🚩 The URL is "sbi-kyc-update.xyz" — NOT sbi.co.in</div>
+          <div class="red-flag-item">🚩 Creates panic with "BLOCKED in 24 HOURS"</div>
+          <div class="red-flag-item">🚩 Unofficial phone number (not SBI's real helpline)</div>
+        </div>
+        <div style="font-family:'Fredoka One',cursive;color:var(--co-yellow);font-size:1.1rem;margin-top:16px;">📱 What should Riya do?</div>
+        <div class="scam-choices" id="scam1Choices">
+          <button class="scam-opt" onclick="pickScam1(this,0)">A. Click the link and update KYC immediately</button>
+          <button class="scam-opt" onclick="pickScam1(this,1)">B. Call the number given in the SMS</button>
+          <button class="scam-opt" onclick="pickScam1(this,2)">C. Delete the message and inform parents — visit the real SBI branch</button>
+          <button class="scam-opt" onclick="pickScam1(this,3)">D. Forward the message to friends to warn them</button>
+        </div>
+        <div class="scam-explain" id="scam1Explain"></div>
+      </div>
+    </div>
+
+    <!-- D1 TAB 5: QUIZ -->
+    <div class="activity" id="d0-tab-5">
+      <div class="act-header">
+        <div class="act-icon-wrap yellow">🧠</div>
+        <div class="act-meta">
+          <div class="act-label">Day 1 · Final Quiz</div>
+          <div class="act-title">Internet Safety Quiz</div>
+          <div class="act-sub">12 questions — Easy → Medium → Hard</div>
+        </div>
+      </div>
+      <div class="quiz-wrap" id="d1QuizWrap">
+        <div class="q-progress-bar"><div class="q-progress-fill" id="d1qBar" style="width:0%"></div></div>
+        <div class="q-dots" id="d1qdots"></div>
+        <div id="d1quizMain">
+          <div class="q-card">
+            <div class="q-meta">
+              <span class="q-level" id="d1qLvl">⭐ Easy</span>
+              <span class="q-counter" id="d1qCounter">Q 1 / 12</span>
+              <span class="q-score-badge" id="d1qScoreBadge">⭐ 0</span>
+            </div>
+            <div class="q-emoji" id="d1qEmo">🌐</div>
+            <div class="q-text" id="d1qTxt">Loading...</div>
+            <div id="d1qOpts"></div>
+            <div class="q-feedback" id="d1qFeed"></div>
+            <button class="co-btn co-btn-orange" id="d1qNextBtn" onclick="d1nextQ()" style="display:none;width:100%;margin-top:14px;">Next Question →</button>
+          </div>
+        </div>
+        <div id="d1qScoreScreen" style="display:none">
+          <div class="q-score-screen card">
+            <div class="qs-trophy" id="d1sTrophy">🏆</div>
+            <div class="qs-big" id="d1sBig">0</div>
+            <div class="qs-total">out of 12</div>
+            <div class="qs-stars" id="d1sStars">⭐</div>
+            <div class="qs-msg" id="d1sMsg">Keep trying!</div>
+            <button class="co-btn co-btn-orange mt16" onclick="initD1Quiz()">🔄 Try Again</button>
+            <button class="co-btn co-btn-teal mt16" style="margin-left:8px;" onclick="unlockDay(1)">🔓 Unlock Day 2 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrap day1 -->
+</div><!-- /dayPanel0 -->
+
+<!-- ═══════════════════════════════════════════ DAY 2 ═══════════════════════════════════════════ -->
+<div class="day-panel" id="dayPanel1">
+  <div class="tab-bar" id="tabBar1">
+    <button class="tab-btn active" onclick="showDayTab(1,0,this)">Learn</button>
+    <button class="tab-btn" onclick="showDayTab(1,1,this)">Mission</button>
+    <button class="tab-btn" onclick="showDayTab(1,2,this)">Fill Blanks</button>
+    <button class="tab-btn" onclick="showDayTab(1,3,this)">Match It</button>
+    <button class="tab-btn" onclick="showDayTab(1,4,this)">Scam Sim</button>
+    <button class="tab-btn" onclick="showDayTab(1,5,this)">Quiz</button>
+  </div>
+  <div class="page-wrap">
+
+    <!-- D2 LEARN (Concept Slider) -->
+    <div class="activity active" id="d1-tab-0">
+      <div class="act-header"><div class="act-icon-wrap navy">🔑</div><div class="act-meta"><div class="act-label">Day 2 · Read First</div><div class="act-title">Passwords & Account Protection</div><div class="act-sub">5 concepts · Use Next to go through each one</div></div></div>
+      <div class="card">
+        <div class="slide-progress-bar"><div class="slide-progress-fill" id="d2LearnBar" style="width:12.5%"></div></div>
+        <div class="slide-counter" id="d2LearnCounter">Concept 1 of 8</div>
+        <div class="concept-slider" id="d2LearnSlider">
+          <div class="concept-slide active" id="d2s0">
+            <div class="concept-box orange"><div class="cb-title">🔑 What Makes a Strong Password?</div><div class="cb-body">A strong password protects your accounts from hackers.<br><br>It must be long, mixed, and unpredictable. Avoid using your name, birthday, or the word "password"!</div></div>
+          </div>
+          <div class="concept-slide" id="d2s1">
+            <div class="concept-box orange"><div class="cb-title">🔑 Password Requirements</div><div class="cb-body">Every strong password needs all four of these:</div></div>
+            <div class="icon-tiles" style="margin-top:16px;"><div class="icon-tile"><div class="it-ico">8️⃣</div><div class="it-name">8+ Characters</div><div class="it-desc">Longer = stronger</div></div><div class="icon-tile"><div class="it-ico">🔠</div><div class="it-name">Mixed Case</div><div class="it-desc">UPPER + lower</div></div><div class="icon-tile"><div class="it-ico">🔢</div><div class="it-name">Numbers</div><div class="it-desc">Include 123</div></div><div class="icon-tile"><div class="it-ico">❗</div><div class="it-name">Symbols</div><div class="it-desc">!@#$%^&*</div></div></div>
+          </div>
+          <div class="concept-slide" id="d2s2">
+            <div class="concept-box red"><div class="cb-title">💀 How Hackers Steal Passwords (Part 1)</div><div class="cb-body">
+              🔴 <strong>Brute Force:</strong> Software tries thousands of combinations per second<br><br>
+              🔴 <strong>Phishing:</strong> Fake websites steal your password when you type it<br><br>
+              🔴 <strong>Keylogging:</strong> Malware secretly records every key you press
+            </div></div>
+          </div>
+          <div class="concept-slide" id="d2s3">
+            <div class="concept-box red"><div class="cb-title">💀 How Hackers Steal Passwords (Part 2)</div><div class="cb-body">
+              🔴 <strong>Shoulder Surfing:</strong> Someone physically watches you type<br><br>
+              🔴 <strong>Data Breach:</strong> A website gets hacked and all passwords are leaked<br><br>
+              🔴 <strong>Social Engineering:</strong> Tricking you into giving your password willingly
+            </div></div>
+          </div>
+          <div class="concept-slide" id="d2s4">
+            <div class="concept-box teal"><div class="cb-title">📱 Two-Factor Authentication (2FA)</div><div class="cb-body">2FA adds an <strong>extra security layer</strong> beyond just your password.<br><br>1️⃣ Enter your password<br>2️⃣ A 6-digit code is sent to YOUR phone<br>3️⃣ Enter that code to log in</div></div>
+          </div>
+          <div class="concept-slide" id="d2s5">
+            <div class="concept-box teal"><div class="cb-title">📱 Why 2FA is So Powerful</div><div class="cb-body">Even if a hacker steals your password, they <strong>cannot log in without your phone!</strong><br><br>Always enable 2FA on:<br>📧 Gmail &amp; Email<br>📱 Instagram &amp; Social Media<br>🏦 Banking and payment apps</div></div>
+          </div>
+          <div class="concept-slide" id="d2s6">
+            <div class="section-title" style="font-size:1.1rem;margin-bottom:14px;">⚔️ Weak vs Strong Passwords</div>
+            <table class="compare-table"><tr><th class="h-col">❌ Weak</th><th class="a-col">✅ Strong</th></tr><tr><td>rohit123</td><td>R0h!t@Sec#2024</td></tr><tr><td>password</td><td>P@$$w0rd!X9#</td></tr><tr><td>123456</td><td>Cr!cket⚡W!ns77</td></tr></table>
+            <div class="concept-box yellow" style="margin-top:14px;"><div class="cb-title">💡 Passphrase Method</div><div class="cb-body">"I love cricket and scored 50 runs!" → <strong>ILc&amp;s50R!</strong> Easy to remember, hard to crack!</div></div>
+          </div>
+          <div class="concept-slide" id="d2s7">
+            <div class="concept-box green"><div class="cb-title">🛡️ Password Safety Rules</div><div class="cb-body">
+              ✅ Use a <strong>different password</strong> for every app<br><br>
+              ✅ <strong>Never share</strong> your password with anyone<br><br>
+              ✅ Enable <strong>2FA</strong> on all important accounts<br><br>
+              ✅ Never save passwords on <strong>shared computers</strong>
+            </div></div>
+          </div>
+        </div>
+        <div class="slide-dots" id="d2LearnDots"></div>
+        <div class="slide-nav">
+          <button class="slide-nav-btn slide-prev-btn" id="d2PrevBtn" onclick="d2SlideNav(-1)" disabled>← Prev</button>
+          <button class="slide-nav-btn slide-next-btn" id="d2NextBtn" onclick="d2SlideNav(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- D2 MISSION -->
+    <div class="activity" id="d1-tab-1">
+      <div class="act-header"><div class="act-icon-wrap orange">🎯</div><div class="act-meta"><div class="act-label">Day 2 · Your Mission</div><div class="act-title">Daily Mission Checklist</div><div class="act-sub">Complete all tasks to unlock Day 3!</div></div></div>
+      <div class="mission-card">
+        <div class="mission-title">DAY 2 GOAL — Password Safety</div>
+        <div class="mission-item"><div class="mission-check" id="mc-d2-1" onclick="toggleMission('d2-1',10)">☐</div><span class="mission-bullet">1</span><span class="mission-text">Learn about strong passwords and 2FA</span><button class="mission-go-btn" onclick="showDayTab(1,0,document.querySelectorAll('#tabBar1 .tab-btn')[0]);toggleMission('d2-1',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d2-2" onclick="toggleMission('d2-2',15)">☐</div><span class="mission-bullet">2</span><span class="mission-text">Complete the Fill in the Blanks activity</span><button class="mission-go-btn" onclick="showDayTab(1,2,document.querySelectorAll('#tabBar1 .tab-btn')[2]);toggleMission('d2-2',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d2-3" onclick="toggleMission('d2-3',20)">☐</div><span class="mission-bullet">3</span><span class="mission-text">Match the password types correctly</span><button class="mission-go-btn" onclick="showDayTab(1,3,document.querySelectorAll('#tabBar1 .tab-btn')[3]);toggleMission('d2-3',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d2-4" onclick="toggleMission('d2-4',25)">☐</div><span class="mission-bullet">4</span><span class="mission-text">Detect the OLX buyer scam simulation</span><button class="mission-go-btn" onclick="showDayTab(1,4,document.querySelectorAll('#tabBar1 .tab-btn')[4]);toggleMission('d2-4',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d2-5" onclick="toggleMission('d2-5',30)">☐</div><span class="mission-bullet">5</span><span class="mission-text">Pass the Day 2 Quiz</span><button class="mission-go-btn" onclick="showDayTab(1,5,document.querySelectorAll('#tabBar1 .tab-btn')[5]);toggleMission('d2-5',0)">Go →</button></div>
+      </div>
+      <div class="card" id="day2CompletionCard" style="display:none;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:10px;">🔑</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--co-green);">Day 2 Complete!</div>
+        <div style="font-size:0.9rem;font-weight:600;color:var(--co-muted);margin:8px 0 16px;">You earned the <strong>🔐 Password Pro</strong> badge!</div>
+        <button class="co-btn co-btn-teal" onclick="unlockDay(2)">🔓 Unlock Day 3 →</button>
+      </div>
+    </div>
+
+    <!-- D2 FILL BLANKS -->
+    <div class="activity" id="d1-tab-2">
+      <div class="act-header"><div class="act-icon-wrap teal">✏️</div><div class="act-meta"><div class="act-label">Activity 1</div><div class="act-title">Fill in the Blanks</div><div class="act-sub">Tap a word from the bank, then tap a blank to fill it</div></div></div>
+      <div class="card">
+        <div class="wb-label">📦 Word Bank — tap a word first:</div>
+        <div class="word-bank" id="d2WordBank"></div>
+        <div id="d2FitbContainer"></div>
+        <div id="d2fitbScore" style="text-align:center;font-weight:800;font-size:1rem;padding:8px;color:var(--co-navy);min-height:30px;"></div>
+        <button class="co-btn co-btn-outline" onclick="resetD2FITB()" style="margin-top:8px;">🔄 Reset</button>
+      </div>
+    </div>
+
+    <!-- D2 MATCH IT -->
+    <div class="activity" id="d1-tab-3">
+      <div class="act-header"><div class="act-icon-wrap purple">🔗</div><div class="act-meta"><div class="act-label">Activity 2</div><div class="act-title">Match It!</div><div class="act-sub">Tap a left item, then tap its matching right item</div></div></div>
+      <div class="card">
+        <div class="match-columns" id="d2MatchWrap"></div>
+        <div class="match-result" id="d2MatchResult"></div>
+        <button class="co-btn co-btn-outline" onclick="buildD2Match()" style="margin-top:8px;">🔄 Reset</button>
+      </div>
+    </div>
+
+    <!-- D2 SCAM SIM — OLX Buyer Scam -->
+    <div class="activity" id="d1-tab-4">
+      <div class="act-header"><div class="act-icon-wrap red">🎭</div><div class="act-meta"><div class="act-label">Scam Simulation #4</div><div class="act-title">OLX Buyer Scam</div><div class="act-sub">A "buyer" wants to send advance payment — what's really happening?</div></div></div>
+      <div class="scam-screen">
+        <div class="scam-title">⚠️ OLX SCAM ALERT</div>
+        <div class="scam-subtitle">Aryan posted his old cycle for ₹2,000 on OLX. He got this message...</div>
+        <div class="fake-sms" style="margin-top:24px;">
+          <strong>Unknown: +91-98765XXXXX</strong><br><br>
+          Hello! I want to buy your cycle. I am in the <span style="color:#FFD23F;">Indian Army</span> and currently posted at Siachen. I will pay <span style="color:#2DC653;font-weight:900;">₹5,000</span> (more than your price). Please share your UPI QR code or account number. I will transfer <span style="color:#2DC653;">advance payment TODAY!</span> No need to meet. Just confirm your details.
+        </div>
+        <div class="red-flags">
+          <div class="red-flags-title">🚩 Red Flags:</div>
+          <div class="red-flag-item">🚩 Offers MORE than the listed price — too good to be true!</div>
+          <div class="red-flag-item">🚩 "Army" claim creates false trust</div>
+          <div class="red-flag-item">🚩 Wants your bank details WITHOUT meeting</div>
+          <div class="red-flag-item">🚩 In reality, they will ask you to SCAN a QR code that DEDUCTS money from YOU</div>
+        </div>
+        <div style="font-family:'Fredoka One',cursive;color:var(--co-yellow);font-size:1.1rem;margin-top:16px;">💭 What should Aryan do?</div>
+        <div class="scam-choices" id="scam4Choices">
+          <button class="scam-opt" onclick="pickScam4(this,0)">A. Share UPI QR code — it seems safe to receive money</button>
+          <button class="scam-opt" onclick="pickScam4(this,1)">B. Send account number to receive ₹5,000 quickly</button>
+          <button class="scam-opt" onclick="pickScam4(this,2)">C. Ignore the message and only deal with buyers who can meet in person</button>
+          <button class="scam-opt" onclick="pickScam4(this,3)">D. Ask for his Army ID and trust him</button>
+        </div>
+        <div class="scam-explain" id="scam4Explain"></div>
+      </div>
+    </div>
+
+    <!-- D2 QUIZ -->
+    <div class="activity" id="d1-tab-5">
+      <div class="act-header"><div class="act-icon-wrap yellow">🧠</div><div class="act-meta"><div class="act-label">Day 2 · Final Quiz</div><div class="act-title">Passwords & Account Safety Quiz</div><div class="act-sub">12 questions — Easy → Medium → Hard</div></div></div>
+      <div class="quiz-wrap">
+        <div class="q-progress-bar"><div class="q-progress-fill" id="d2qBar" style="width:0%"></div></div>
+        <div class="q-dots" id="d2qdots"></div>
+        <div id="d2quizMain">
+          <div class="q-card">
+            <div class="q-meta"><span class="q-level" id="d2qLvl">⭐ Easy</span><span class="q-counter" id="d2qCounter">Q 1 / 12</span><span class="q-score-badge" id="d2qScoreBadge">⭐ 0</span></div>
+            <div class="q-emoji" id="d2qEmo">🔑</div>
+            <div class="q-text" id="d2qTxt">Loading...</div>
+            <div id="d2qOpts"></div>
+            <div class="q-feedback" id="d2qFeed"></div>
+            <button class="co-btn co-btn-orange" id="d2qNextBtn" onclick="d2nextQ()" style="display:none;width:100%;margin-top:14px;">Next Question →</button>
+          </div>
+        </div>
+        <div id="d2qScoreScreen" style="display:none">
+          <div class="q-score-screen card"><div class="qs-trophy" id="d2sTrophy">🏆</div><div class="qs-big" id="d2sBig">0</div><div class="qs-total">out of 12</div><div class="qs-stars" id="d2sStars">⭐</div><div class="qs-msg" id="d2sMsg">Keep trying!</div><button class="co-btn co-btn-orange mt16" onclick="initD2Quiz()">🔄 Try Again</button><button class="co-btn co-btn-teal mt16" style="margin-left:8px;" onclick="unlockDay(2)">🔓 Unlock Day 3 →</button></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /dayPanel1 -->
+
+<!-- ═══════════════════════════════════════════ DAY 3 ═══════════════════════════════════════════ -->
+<div class="day-panel" id="dayPanel2">
+  <div class="tab-bar" id="tabBar2">
+    <button class="tab-btn active" onclick="showDayTab(2,0,this)">Learn</button>
+    <button class="tab-btn" onclick="showDayTab(2,1,this)">Mission</button>
+    <button class="tab-btn" onclick="showDayTab(2,2,this)">Spot It</button>
+    <button class="tab-btn" onclick="showDayTab(2,3,this)">Scam Sim 1</button>
+    <button class="tab-btn" onclick="showDayTab(2,4,this)">Scam Sim 2</button>
+    <button class="tab-btn" onclick="showDayTab(2,5,this)">Quiz</button>
+  </div>
+  <div class="page-wrap">
+
+    <!-- D3 LEARN (Concept Slider) -->
+    <div class="activity active" id="d2-tab-0">
+      <div class="act-header"><div class="act-icon-wrap navy">🎣</div><div class="act-meta"><div class="act-label">Day 3 · Read First</div><div class="act-title">Phishing & Online Scams</div><div class="act-sub">4 concepts · Use Next to go through each one</div></div></div>
+      <div class="card">
+        <div class="slide-progress-bar"><div class="slide-progress-fill" id="d3LearnBar" style="width:14.3%"></div></div>
+        <div class="slide-counter" id="d3LearnCounter">Concept 1 of 7</div>
+        <div class="concept-slider" id="d3LearnSlider">
+          <div class="concept-slide active" id="d3s0">
+            <div class="concept-box orange"><div class="cb-title">🎣 What is Phishing?</div><div class="cb-body">Phishing is when cybercriminals send <strong>fake emails, SMS, or messages</strong> pretending to be trusted organisations.<br><br>Their goal: trick you into clicking a fake link and entering your passwords or personal data.</div></div>
+          </div>
+          <div class="concept-slide" id="d3s1">
+            <div class="concept-box orange"><div class="cb-title">🎣 Why is it Called Phishing?</div><div class="cb-body">The word comes from "fishing" — they cast a wide net hoping someone takes the bait.<br><br>India loses <strong>thousands of crores</strong> every year to phishing scams. It can happen to anyone — including students!</div></div>
+          </div>
+          <div class="concept-slide" id="d3s2">
+            <div class="concept-box red"><div class="cb-title">📱 Types of Phishing (Part 1)</div><div class="cb-body">📧 <strong>Email Phishing:</strong> "Your PAN card is expiring — click here"<br><br>📱 <strong>SMS / Smishing:</strong> Fake bank messages with suspicious links<br><br>📞 <strong>Voice / Vishing:</strong> Fake "bank officer" calls asking for OTP</div></div>
+          </div>
+          <div class="concept-slide" id="d3s3">
+            <div class="concept-box red"><div class="cb-title">📱 Types of Phishing (Part 2)</div><div class="cb-body">💬 <strong>WhatsApp Phishing:</strong> "Congratulations! You won ₹25 lakh in KBC!"<br><br>🎮 <strong>Gaming Phishing:</strong> "Claim your free UC/V-Bucks here!"<br><br>🏦 <strong>Job Scams:</strong> "Work from home and earn ₹50,000/month — pay ₹500 to apply"</div></div>
+          </div>
+          <div class="concept-slide" id="d3s4">
+            <div class="concept-box teal"><div class="cb-title">🔍 Red Flags in Fake Messages</div><div class="cb-body">🚩 <strong>Urgency:</strong> "Act NOW or account CLOSED in 2 hours!"<br><br>🚩 <strong>Suspicious URLs:</strong> "sbi-india.xyz" not "sbi.co.in"<br><br>🚩 <strong>Grammar mistakes</strong> anywhere in the message</div></div>
+          </div>
+          <div class="concept-slide" id="d3s5">
+            <div class="concept-box teal"><div class="cb-title">🔍 More Red Flags</div><div class="cb-body">🚩 Asks for your <strong>OTP, password, CVV, or Aadhaar</strong><br><br>🚩 <strong>Too-good-to-be-true</strong> offers — free iPhone, lottery win<br><br>🚩 Greets you as <strong>"Dear Customer"</strong> instead of your name</div></div>
+          </div>
+          <div class="concept-slide" id="d3s6">
+            <div class="concept-box green"><div class="cb-title">✅ What to Do If You Receive One</div><div class="cb-body">✅ Do <strong>NOT click any link</strong><br><br>✅ Do <strong>NOT share OTP or bank details</strong> with anyone<br><br>✅ Call <strong>📞 1930</strong> or report at <strong>cybercrime.gov.in</strong><br><br>✅ <strong>Tell your parents</strong> immediately</div></div>
+            <div class="helpline-banner" style="margin-top:12px;padding:14px;"><div style="font-size:0.8rem;font-weight:800;opacity:0.9;">CYBER CRIME HELPLINE</div><div style="font-family:'Fredoka One',cursive;font-size:2rem;letter-spacing:4px;">📞 1930</div></div>
+          </div>
+        </div>
+        <div class="slide-dots" id="d3LearnDots"></div>
+        <div class="slide-nav">
+          <button class="slide-nav-btn slide-prev-btn" id="d3PrevBtn" onclick="d3SlideNav(-1)" disabled>← Prev</button>
+          <button class="slide-nav-btn slide-next-btn" id="d3NextBtn" onclick="d3SlideNav(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- D3 MISSION -->
+    <div class="activity" id="d2-tab-1">
+      <div class="act-header"><div class="act-icon-wrap orange">🎯</div><div class="act-meta"><div class="act-label">Day 3 · Your Mission</div><div class="act-title">Daily Mission Checklist</div><div class="act-sub">Complete all tasks to unlock Day 4!</div></div></div>
+      <div class="mission-card">
+        <div class="mission-title">DAY 3 GOAL — Phishing Detection</div>
+        <div class="mission-item"><div class="mission-check" id="mc-d3-1" onclick="toggleMission('d3-1',10)">☐</div><span class="mission-bullet">1</span><span class="mission-text">Learn about Phishing and online scams</span><button class="mission-go-btn" onclick="showDayTab(2,0,document.querySelectorAll('#tabBar2 .tab-btn')[0]);toggleMission('d3-1',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d3-2" onclick="toggleMission('d3-2',15)">☐</div><span class="mission-bullet">2</span><span class="mission-text">Spot the phishing red flags</span><button class="mission-go-btn" onclick="showDayTab(2,2,document.querySelectorAll('#tabBar2 .tab-btn')[2]);toggleMission('d3-2',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d3-3" onclick="toggleMission('d3-3',25)">☐</div><span class="mission-bullet">3</span><span class="mission-text">Complete Electricity Bill Scam simulation</span><button class="mission-go-btn" onclick="showDayTab(2,3,document.querySelectorAll('#tabBar2 .tab-btn')[3]);toggleMission('d3-3',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d3-4" onclick="toggleMission('d3-4',25)">☐</div><span class="mission-bullet">4</span><span class="mission-text">Complete Fake Scholarship scam simulation</span><button class="mission-go-btn" onclick="showDayTab(2,4,document.querySelectorAll('#tabBar2 .tab-btn')[4]);toggleMission('d3-4',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d3-5" onclick="toggleMission('d3-5',30)">☐</div><span class="mission-bullet">5</span><span class="mission-text">Pass the Day 3 Quiz</span><button class="mission-go-btn" onclick="showDayTab(2,5,document.querySelectorAll('#tabBar2 .tab-btn')[5]);toggleMission('d3-5',0)">Go →</button></div>
+      </div>
+      <div class="card" id="day3CompletionCard" style="display:none;text-align:center;"><div style="font-size:3rem;margin-bottom:10px;">🎣</div><div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--co-green);">Day 3 Complete!</div><div style="font-size:0.9rem;font-weight:600;color:var(--co-muted);margin:8px 0 16px;">You earned the <strong>🕵️ Scam Spotter</strong> badge!</div><button class="co-btn co-btn-teal" onclick="unlockDay(3)">🔓 Unlock Day 4 →</button></div>
+    </div>
+
+    <!-- D3 SPOT IT -->
+    <div class="activity" id="d2-tab-2">
+      <div class="act-header"><div class="act-icon-wrap teal">🔍</div><div class="act-meta"><div class="act-label">Activity 1</div><div class="act-title">Spot the Phishing Signs!</div><div class="act-sub">Tap on all the RED FLAGS hidden in this fake message</div></div></div>
+      <div class="card">
+        <div style="background:#1A1A3E;border-radius:var(--radius-lg);padding:20px;color:#fff;font-size:0.9rem;line-height:1.8;margin-bottom:16px;position:relative;">
+          <div style="font-size:0.72rem;font-weight:800;color:rgba(255,255,255,0.5);margin-bottom:8px;">✉️ From: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="147a7b667164786d547c70727739676164647b66603975787166603a6c6d6e">[email&#160;protected]</a></div>
+          <div style="font-size:0.72rem;font-weight:800;color:rgba(255,255,255,0.5);margin-bottom:16px;">Subject: URGENT — Your HDFC Account is Suspended!</div>
+          Dear <span class="spot-flag" id="sf0" data-correct="false" onclick="tapSpotFlag(this,'false')" style="cursor:pointer;text-decoration:underline;color:#FFD23F;">Valued Customer</span>,<br><br>
+          We have noticed <span class="spot-flag" id="sf1" data-correct="true" onclick="tapSpotFlag(this,'true')" style="cursor:pointer;background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">suspicious activity</span> on your account. Your account will be <span class="spot-flag" id="sf2" data-correct="true" onclick="tapSpotFlag(this,'true')" style="cursor:pointer;background:rgba(230,57,70,0.3);padding:2px 6px;border-radius:4px;color:#FF6B7A;font-weight:900;">PERMANENTLY BLOCKED in 2 HOURS</span> unless you verify now.<br><br>
+          Click here to verify: <span class="spot-flag" id="sf3" data-correct="true" onclick="tapSpotFlag(this,'true')" style="cursor:pointer;text-decoration:underline;color:#4F6DF5;">http://hdfc-bank-secure.xyz/verify</span><br><br>
+          <span class="spot-flag" id="sf4" data-correct="false" onclick="tapSpotFlag(this,'false')" style="cursor:pointer;color:rgba(255,255,255,0.7);">Thank you for using HDFC Bank.</span><br><br>
+          Your OTP for verification is <span class="spot-flag" id="sf5" data-correct="true" onclick="tapSpotFlag(this,'true')" style="cursor:pointer;background:rgba(255,210,63,0.2);padding:2px 6px;border-radius:4px;color:var(--co-yellow);">required — call us at +91-8976XXXX to confirm</span>.
+        </div>
+        <div id="spotFlagStatus" style="text-align:center;font-weight:800;color:var(--co-navy);padding:10px;min-height:30px;">👆 Tap on the suspicious parts in the email above!</div>
+        <div id="spotFlagScore" style="text-align:center;color:var(--co-green);font-family:'Fredoka One',cursive;font-size:1.2rem;min-height:30px;"></div>
+      </div>
+    </div>
+
+    <!-- D3 SCAM SIM — Electricity Scam -->
+    <div class="activity" id="d2-tab-3">
+      <div class="act-header"><div class="act-icon-wrap red">🎭</div><div class="act-meta"><div class="act-label">Scam Simulation #2</div><div class="act-title">Electricity Bill Disconnection Scam</div><div class="act-sub">A popular scam targeting Indian families</div></div></div>
+      <div class="scam-screen">
+        <div class="scam-title">⚠️ ELECTRICITY SCAM ALERT</div>
+        <div class="scam-subtitle">Meera's father received this WhatsApp message from an unknown number...</div>
+        <div class="fake-sms" style="margin-top:24px;background:#1A2A1A;border-color:#2DC653;">
+          <strong>📱 WhatsApp from: Unknown (+91-9871XXXXX)</strong><br><br>
+          Dear Consumer, Your electricity supply will be <span style="color:#FF6B7A;font-weight:900;">DISCONNECTED TONIGHT at 9:30 PM</span> due to non-payment of outstanding bill ₹876. Contact our Executive <span style="color:#FFD23F;">Mr. Rajesh Kumar</span> immediately on <span style="color:#FFD23F;">+91-9871XXXXX</span> to avoid disruption. — <em>BESCOM Customer Care</em>
+        </div>
+        <div class="red-flags">
+          <div class="red-flags-title">🚩 Red Flags:</div>
+          <div class="red-flag-item">🚩 Real electricity companies contact via registered email/official SMS — NOT WhatsApp</div>
+          <div class="red-flag-item">🚩 "Tonight 9:30 PM" creates panic to make you act without thinking</div>
+          <div class="red-flag-item">🚩 Personal mobile number — not an official helpline</div>
+          <div class="red-flag-item">🚩 They will ask you to install a remote access app like AnyDesk and steal banking data</div>
+        </div>
+        <div style="font-family:'Fredoka One',cursive;color:var(--co-yellow);font-size:1.1rem;margin-top:16px;">⚡ What should Meera's father do?</div>
+        <div class="scam-choices" id="scam2Choices">
+          <button class="scam-opt" onclick="pickScam2(this,0)">A. Call Mr. Rajesh Kumar immediately to avoid disconnection</button>
+          <button class="scam-opt" onclick="pickScam2(this,1)">B. Install AnyDesk as instructed to verify the bill</button>
+          <button class="scam-opt" onclick="pickScam2(this,2)">C. Ignore the WhatsApp, check the official BESCOM website or visit the local office</button>
+          <button class="scam-opt" onclick="pickScam2(this,3)">D. Pay ₹876 via UPI to the number given</button>
+        </div>
+        <div class="scam-explain" id="scam2Explain"></div>
+      </div>
+    </div>
+
+    <!-- D3 SCAM SIM — Fake Scholarship -->
+    <div class="activity" id="d2-tab-4">
+      <div class="act-header"><div class="act-icon-wrap indigo">🎭</div><div class="act-meta"><div class="act-label">Scam Simulation #5</div><div class="act-title">Fake Scholarship Scam</div><div class="act-sub">Targeting students and parents across India</div></div></div>
+      <div class="scam-screen">
+        <div class="scam-title">⚠️ SCHOLARSHIP SCAM ALERT</div>
+        <div class="scam-subtitle">Priya received this email on her school account...</div>
+        <div class="fake-email" style="margin-top:24px;">
+          <strong>From: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1d2c2c9cecdc0d3d2c9c8d1d2e1d1ccd2c2c9c4ccc48cc8cfc5c8c08fcfc4d5">[email&#160;protected]</a></strong><br>
+          <strong>Subject: 🎓 Congratulations! You've been selected for ₹50,000 Scholarship!</strong><br><br>
+          Dear Priya,<br><br>
+          Based on your academic performance, you have been selected for the <span style="color:#818CF8;font-weight:900;">PM National Talent Scholarship 2025</span> worth <span style="color:#2DC653;font-weight:900;">₹50,000</span>.<br><br>
+          To claim your scholarship, please pay a <span style="color:#FFD23F;">registration fee of ₹500</span> via UPI to: <strong>scholarship@paytm</strong> and send your Aadhaar number, bank account details, and parent's phone number to confirm eligibility.<br><br>
+          <em>Last date: Tomorrow! Offer expires in 24 hours.</em>
+        </div>
+        <div class="red-flags">
+          <div class="red-flags-title">🚩 Red Flags:</div>
+          <div class="red-flag-item">🚩 Government scholarships NEVER ask for a registration fee</div>
+          <div class="red-flag-item">🚩 Email domain is "india-gov-education.net" — real gov sites end in .gov.in</div>
+          <div class="red-flag-item">🚩 Asking for Aadhaar + bank details via email</div>
+          <div class="red-flag-item">🚩 "Expires in 24 hours" — pressure tactic</div>
+        </div>
+        <div style="font-family:'Fredoka One',cursive;color:var(--co-yellow);font-size:1.1rem;margin-top:16px;">🎓 What should Priya do?</div>
+        <div class="scam-choices" id="scam5Choices">
+          <button class="scam-opt" onclick="pickScam5(this,0)">A. Pay ₹500 quickly before the deadline</button>
+          <button class="scam-opt" onclick="pickScam5(this,1)">B. Send Aadhaar and bank details to confirm scholarship</button>
+          <button class="scam-opt" onclick="pickScam5(this,2)">C. Delete the email and report to teacher/parents — check official scholarship.gov.in</button>
+          <button class="scam-opt" onclick="pickScam5(this,3)">D. Forward to friends so they can also apply</button>
+        </div>
+        <div class="scam-explain" id="scam5Explain"></div>
+      </div>
+    </div>
+
+    <!-- D3 QUIZ -->
+    <div class="activity" id="d2-tab-5">
+      <div class="act-header"><div class="act-icon-wrap yellow">🧠</div><div class="act-meta"><div class="act-label">Day 3 · Final Quiz</div><div class="act-title">Phishing & Scam Detection Quiz</div><div class="act-sub">12 questions — Easy → Medium → Hard</div></div></div>
+      <div class="quiz-wrap">
+        <div class="q-progress-bar"><div class="q-progress-fill" id="d3qBar" style="width:0%"></div></div>
+        <div class="q-dots" id="d3qdots"></div>
+        <div id="d3quizMain">
+          <div class="q-card">
+            <div class="q-meta"><span class="q-level" id="d3qLvl">⭐ Easy</span><span class="q-counter" id="d3qCounter">Q 1 / 12</span><span class="q-score-badge" id="d3qScoreBadge">⭐ 0</span></div>
+            <div class="q-emoji" id="d3qEmo">🎣</div>
+            <div class="q-text" id="d3qTxt">Loading...</div>
+            <div id="d3qOpts"></div>
+            <div class="q-feedback" id="d3qFeed"></div>
+            <button class="co-btn co-btn-orange" id="d3qNextBtn" onclick="d3nextQ()" style="display:none;width:100%;margin-top:14px;">Next Question →</button>
+          </div>
+        </div>
+        <div id="d3qScoreScreen" style="display:none"><div class="q-score-screen card"><div class="qs-trophy" id="d3sTrophy">🏆</div><div class="qs-big" id="d3sBig">0</div><div class="qs-total">out of 12</div><div class="qs-stars" id="d3sStars">⭐</div><div class="qs-msg" id="d3sMsg">Keep trying!</div><button class="co-btn co-btn-orange mt16" onclick="initD3Quiz()">🔄 Try Again</button><button class="co-btn co-btn-teal mt16" style="margin-left:8px;" onclick="unlockDay(3)">🔓 Unlock Day 4 →</button></div></div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /dayPanel2 -->
+
+<!-- ═══════════════════════════════════════════ DAY 4 ═══════════════════════════════════════════ -->
+<div class="day-panel" id="dayPanel3">
+  <div class="tab-bar" id="tabBar3">
+    <button class="tab-btn active" onclick="showDayTab(3,0,this)">Learn</button>
+    <button class="tab-btn" onclick="showDayTab(3,1,this)">Mission</button>
+    <button class="tab-btn" onclick="showDayTab(3,2,this)">Scenarios</button>
+    <button class="tab-btn" onclick="showDayTab(3,3,this)">Scam Sim</button>
+    <button class="tab-btn" onclick="showDayTab(3,4,this)">Scramble</button>
+    <button class="tab-btn" onclick="showDayTab(3,5,this)">Quiz</button>
+  </div>
+  <div class="page-wrap">
+
+    <!-- D4 LEARN -->
+    <!-- D4 LEARN (Concept Slider) -->
+    <div class="activity active" id="d3-tab-0">
+      <div class="act-header"><div class="act-icon-wrap navy">📱</div><div class="act-meta"><div class="act-label">Day 4 · Read First</div><div class="act-title">Social Media & Gaming Safety</div><div class="act-sub">4 concepts · Use Next to go through each one</div></div></div>
+      <div class="card">
+        <div class="slide-progress-bar"><div class="slide-progress-fill" id="d4LearnBar" style="width:14.3%"></div></div>
+        <div class="slide-counter" id="d4LearnCounter">Concept 1 of 7</div>
+        <div class="concept-slider" id="d4LearnSlider">
+          <div class="concept-slide active" id="d4ls0">
+            <div class="concept-box orange"><div class="cb-title">👤 What is Catfishing?</div><div class="cb-body">Cybercriminals create fake social media profiles using stolen photos to befriend children and teenagers.<br><br>They slowly gain trust — then ask for personal information, photos, or money.</div></div>
+          </div>
+          <div class="concept-slide" id="d4ls1">
+            <div class="concept-box orange"><div class="cb-title">👤 How to Spot a Fake Profile</div><div class="cb-body">
+              ⚠️ No mutual friends<br><br>
+              ⚠️ Account was recently created<br><br>
+              ⚠️ Photos look too perfect or model-like<br><br>
+              ⚠️ Quickly asks to move to private chat or WhatsApp
+            </div></div>
+          </div>
+          <div class="concept-slide" id="d4ls2">
+            <div class="concept-box red"><div class="cb-title">😢 What is Cyberbullying?</div><div class="cb-body">Cyberbullying is using digital technology to <strong>repeatedly harm or intimidate</strong> someone.<br><br>💬 Mean or threatening messages<br><br>📢 Spreading false rumours online<br><br>📸 Sharing embarrassing photos without permission</div></div>
+          </div>
+          <div class="concept-slide" id="d4ls3">
+            <div class="concept-box red"><div class="cb-title">⚖️ Cyberbullying is a Crime</div><div class="cb-body">Under India's IT Act, cyberbullying is <strong>punishable with imprisonment</strong>.<br><br>🚫 Excluding someone from online groups<br><br>🎮 Targeting someone in multiplayer games<br><br>If it happens to you — screenshot, block, and tell a trusted adult <strong>immediately</strong>.</div></div>
+          </div>
+          <div class="concept-slide" id="d4ls4">
+            <div class="concept-box teal"><div class="cb-title">🎮 Gaming Scams (Part 1)</div><div class="cb-body">🕹️ <strong>Free V-Bucks/UC:</strong> Sites claiming free currency steal your account<br><br>🕹️ <strong>Fake mods/hacks:</strong> Downloads that secretly install malware<br><br>🕹️ <strong>"Pro Player" boosts:</strong> Pays for rank boost then blocks you</div></div>
+          </div>
+          <div class="concept-slide" id="d4ls5">
+            <div class="concept-box teal"><div class="cb-title">🎮 Gaming Scams (Part 2)</div><div class="cb-body">🕹️ <strong>Gift card demands:</strong> Online "friends" ask you to buy &amp; share gift codes<br><br>🕹️ <strong>Fake tournaments:</strong> Ask for registration fees, then disappear<br><br>⚠️ <strong>Golden Rule: Free in-game currency offers are ALWAYS scams!</strong></div></div>
+          </div>
+          <div class="concept-slide" id="d4ls6">
+            <div class="concept-box green"><div class="cb-title">✅ Social Media &amp; Gaming Safety</div><div class="cb-body">✅ Keep accounts <strong>Private</strong> — only accept known friends<br><br>✅ <strong>Report and block</strong> bullies immediately<br><br>✅ <strong>Screenshot evidence</strong> before blocking<br><br>✅ Tell parents if online "friends" ask to <strong>meet in person</strong></div></div>
+            <div class="icon-tiles" style="margin-top:12px;"><div class="icon-tile"><div class="it-ico">🔒</div><div class="it-name">Private Account</div><div class="it-desc">Only approved friends</div></div><div class="icon-tile"><div class="it-ico">🚫</div><div class="it-name">Block &amp; Report</div><div class="it-desc">Use platform tools</div></div><div class="icon-tile"><div class="it-ico">👪</div><div class="it-name">Tell Trusted Adult</div><div class="it-desc">Never face threats alone</div></div></div>
+          </div>
+        </div>
+        <div class="slide-dots" id="d4lLearnDots"></div>
+        <div class="slide-nav">
+          <button class="slide-nav-btn slide-prev-btn" id="d4lPrevBtn" onclick="d4lSlideNav(-1)" disabled>← Prev</button>
+          <button class="slide-nav-btn slide-next-btn" id="d4lNextBtn" onclick="d4lSlideNav(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- D4 MISSION -->
+    <div class="activity" id="d3-tab-1">
+      <div class="act-header"><div class="act-icon-wrap orange">🎯</div><div class="act-meta"><div class="act-label">Day 4 · Your Mission</div><div class="act-title">Daily Mission Checklist</div><div class="act-sub">Complete all tasks to unlock Day 5!</div></div></div>
+      <div class="mission-card">
+        <div class="mission-title">📅 DAY 4 GOAL — Social Media Safety</div>
+        <div class="mission-item"><div class="mission-check" id="mc-d4-1" onclick="toggleMission('d4-1',10)">☐</div><span>📖 Learn about Fake Profiles & Gaming Scams</span></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d4-2" onclick="toggleMission('d4-2',20)">☐</div><span>💡 Complete the Cyberbullying Scenarios</span></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d4-3" onclick="toggleMission('d4-3',25)">☐</div><span>🎭 Detect the Free Gaming Rewards scam</span></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d4-4" onclick="toggleMission('d4-4',15)">☐</div><span>🔤 Unscramble cyber safety vocabulary</span></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d4-5" onclick="toggleMission('d4-5',30)">☐</div><span>🧠 Pass the Day 4 Quiz</span></div>
+      </div>
+      <div class="card" id="day4CompletionCard" style="display:none;text-align:center;"><div style="font-size:3rem;margin-bottom:10px;">📱</div><div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--co-green);">Day 4 Complete!</div><div style="font-size:0.9rem;font-weight:600;color:var(--co-muted);margin:8px 0 16px;">You earned the <strong>🛡️ Social Shield</strong> badge!</div><button class="co-btn co-btn-teal" onclick="unlockDay(4)">🔓 Unlock Day 5 →</button></div>
+    </div>
+
+    <!-- D4 SCENARIOS -->
+    <div class="activity" id="d3-tab-2">
+      <div class="act-header"><div class="act-icon-wrap teal">💡</div><div class="act-meta"><div class="act-label">Activity 1</div><div class="act-title">Real-Life Scenarios</div><div class="act-sub">What would you do in these social media situations?</div></div></div>
+      <div class="card" id="d4ScenarioContainer"></div>
+    </div>
+
+    <!-- D4 SCAM SIM — Gaming Scam -->
+    <div class="activity" id="d3-tab-3">
+      <div class="act-header"><div class="act-icon-wrap red">🎭</div><div class="act-meta"><div class="act-label">Scam Simulation #6</div><div class="act-title">Free Gaming Rewards Scam</div><div class="act-sub">Free V-Bucks? Free UC? It's a trap!</div></div></div>
+      <div class="scam-screen">
+        <div class="scam-title">⚠️ GAMING SCAM ALERT</div>
+        <div class="scam-subtitle">Kabir was playing BGMI when he received this pop-up and then a DM...</div>
+        <div class="fake-sms" style="margin-top:24px;background:#1A0A2E;border-color:#7B5EA7;">
+          <strong>🎮 In-game Pop-up:</strong><br><br>
+          🏆 <span style="color:#FFD23F;font-weight:900;">CONGRATULATIONS!</span> You have been selected as our <span style="color:#7B5EA7;">Diamond Player of the Week!</span><br><br>
+          🎁 REWARD: <span style="color:#2DC653;font-weight:900;">5,000 UC (₹4,000 value) FREE!</span><br><br>
+          To claim: Visit <span style="color:#4F6DF5;text-decoration:underline;">freebgmiuc.xyz/claim</span> and enter your BGMI ID and password within 10 minutes!
+        </div>
+        <div class="red-flags">
+          <div class="red-flags-title">🚩 Red Flags:</div>
+          <div class="red-flag-item">🚩 BGMI/Garena NEVER give free UC/diamonds via pop-ups or third-party sites</div>
+          <div class="red-flag-item">🚩 "freebgmiuc.xyz" is NOT the official game website</div>
+          <div class="red-flag-item">🚩 Asking for your PASSWORD — legitimate platforms never ask for this</div>
+          <div class="red-flag-item">🚩 "10 minute" countdown creates pressure to act without thinking</div>
+        </div>
+        <div style="font-family:'Fredoka One',cursive;color:var(--co-yellow);font-size:1.1rem;margin-top:16px;">🎮 What should Kabir do?</div>
+        <div class="scam-choices" id="scam6Choices">
+          <button class="scam-opt" onclick="pickScam6(this,0)">A. Visit the website and claim the free UC quickly!</button>
+          <button class="scam-opt" onclick="pickScam6(this,1)">B. Enter BGMI ID but not the password</button>
+          <button class="scam-opt" onclick="pickScam6(this,2)">C. Close the pop-up, ignore the site, report to game customer support</button>
+          <button class="scam-opt" onclick="pickScam6(this,3)">D. Share the link with friends so they can also get free UC</button>
+        </div>
+        <div class="scam-explain" id="scam6Explain"></div>
+      </div>
+    </div>
+
+    <!-- D4 SCRAMBLE -->
+    <div class="activity" id="d3-tab-4">
+      <div class="act-header"><div class="act-icon-wrap purple">🔤</div><div class="act-meta"><div class="act-label">Activity 2</div><div class="act-title">Word Scramble!</div><div class="act-sub">Unscramble these cyber safety keywords</div></div></div>
+      <div class="card">
+        <div class="scr-box">
+          <div class="scr-progress" id="d4scrProgress">Word 1 of 8</div>
+          <div style="height:16px"></div>
+          <div class="scr-word" id="d4scrWord">LOADING</div>
+          <div class="scr-hint" id="d4scrHint">Loading hint...</div>
+          <div style="font-size:0.8rem;font-weight:700;color:var(--co-muted);margin-bottom:10px;" id="d4scrScore">Score: 0</div>
+          <input class="scr-input" id="d4scrInput" placeholder="Type your answer..." autocomplete="off" oninput="this.value=this.value.toUpperCase()">
+          <div class="scr-msg" id="d4scrMsg"></div>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+            <button class="co-btn co-btn-orange" onclick="checkD4Scramble()">✅ Check</button>
+            <button class="co-btn co-btn-outline" onclick="revealD4Scramble()">👁 Reveal</button>
+            <button class="co-btn co-btn-outline" onclick="nextD4Scramble()">⏭ Skip</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D4 QUIZ -->
+    <div class="activity" id="d3-tab-5">
+      <div class="act-header"><div class="act-icon-wrap yellow">🧠</div><div class="act-meta"><div class="act-label">Day 4 · Final Quiz</div><div class="act-title">Social Media & Gaming Safety Quiz</div><div class="act-sub">12 questions — Easy → Medium → Hard</div></div></div>
+      <div class="quiz-wrap">
+        <div class="q-progress-bar"><div class="q-progress-fill" id="d4qBar" style="width:0%"></div></div>
+        <div class="q-dots" id="d4qdots"></div>
+        <div id="d4quizMain">
+          <div class="q-card">
+            <div class="q-meta"><span class="q-level" id="d4qLvl">⭐ Easy</span><span class="q-counter" id="d4qCounter">Q 1 / 12</span><span class="q-score-badge" id="d4qScoreBadge">⭐ 0</span></div>
+            <div class="q-emoji" id="d4qEmo">📱</div>
+            <div class="q-text" id="d4qTxt">Loading...</div>
+            <div id="d4qOpts"></div>
+            <div class="q-feedback" id="d4qFeed"></div>
+            <button class="co-btn co-btn-orange" id="d4qNextBtn" onclick="d4nextQ()" style="display:none;width:100%;margin-top:14px;">Next Question →</button>
+          </div>
+        </div>
+        <div id="d4qScoreScreen" style="display:none"><div class="q-score-screen card"><div class="qs-trophy" id="d4sTrophy">🏆</div><div class="qs-big" id="d4sBig">0</div><div class="qs-total">out of 12</div><div class="qs-stars" id="d4sStars">⭐</div><div class="qs-msg" id="d4sMsg">Keep trying!</div><button class="co-btn co-btn-orange mt16" onclick="initD4Quiz()">🔄 Try Again</button><button class="co-btn co-btn-teal mt16" style="margin-left:8px;" onclick="unlockDay(4)">🔓 Unlock Day 5 →</button></div></div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /dayPanel3 -->
+
+<!-- ═══════════════════════════════════════════ DAY 5 ═══════════════════════════════════════════ -->
+<div class="day-panel" id="dayPanel4">
+  <div class="tab-bar" id="tabBar4">
+    <button class="tab-btn active" onclick="showDayTab(4,0,this)">Learn</button>
+    <button class="tab-btn" onclick="showDayTab(4,1,this)">Mission</button>
+    <button class="tab-btn" onclick="showDayTab(4,2,this)">OTP Scam</button>
+    <button class="tab-btn" onclick="showDayTab(4,3,this)">QR Scam</button>
+    <button class="tab-btn" onclick="showDayTab(4,4,this)">Helpline</button>
+    <button class="tab-btn" onclick="showDayTab(4,5,this)">Final Quiz</button>
+  </div>
+  <div class="page-wrap">
+
+    <!-- D5 LEARN (Concept Slider) -->
+    <div class="activity active" id="d4-tab-0">
+      <div class="act-header"><div class="act-icon-wrap navy">💳</div><div class="act-meta"><div class="act-label">Day 5 · Read First</div><div class="act-title">Banking Fraud & What To Do If Scammed</div><div class="act-sub">5 concepts · Use Next to go through each one</div></div></div>
+      <div class="card">
+        <div class="slide-progress-bar"><div class="slide-progress-fill" id="d5LearnBar" style="width:12.5%"></div></div>
+        <div class="slide-counter" id="d5LearnCounter">Concept 1 of 8</div>
+        <div class="concept-slider" id="d5LearnSlider">
+          <div class="concept-slide active" id="d5ls0">
+            <div class="concept-box red"><div class="cb-title">📲 OTP Scams — Most Common in India</div><div class="cb-body">A fake "bank officer" calls saying your account has a problem and asks for the OTP sent to your phone.<br><br><strong>YOUR OTP = YOUR MONEY. NEVER share it with anyone!</strong></div></div>
+          </div>
+          <div class="concept-slide" id="d5ls1">
+            <div class="concept-box red"><div class="cb-title">📲 Why Banks Never Ask for OTP</div><div class="cb-body">Real bank employees <strong>NEVER ask for OTP</strong> on a phone call — it's against bank policy worldwide.<br><br>If anyone — even someone claiming to be from your bank — asks for your OTP, <strong>hang up immediately!</strong><br><br>Then call your bank's official number from the back of your card.</div></div>
+          </div>
+          <div class="concept-slide" id="d5ls2">
+            <div class="concept-box orange"><div class="cb-title">💸 UPI Collect Request Trap</div><div class="cb-body">Scammers send a "Collect Request" on PhonePe or GPay saying:<br><br><em>"I'm sending you ₹5,000 — just approve this request."</em><br><br>But approving a COLLECT request means <strong>money LEAVES your account!</strong></div></div>
+          </div>
+          <div class="concept-slide" id="d5ls3">
+            <div class="concept-box orange"><div class="cb-title">💸 How to Receive UPI Money Safely</div><div class="cb-body">
+              ✅ <strong>To RECEIVE money:</strong> Just share your UPI ID or phone number<br><br>
+              ❌ <strong>COLLECT REQUEST:</strong> Always means money goes OUT<br><br>
+              ❌ <strong>SCAN QR CODE:</strong> Always means money goes OUT<br><br>
+              You never need to do anything special to receive UPI payments!
+            </div></div>
+          </div>
+          <div class="concept-slide" id="d5ls4">
+            <div class="concept-box purple"><div class="cb-title">📷 QR Code Scam — The Golden Rule</div><div class="cb-body">Scammers say: <em>"Scan this QR code to RECEIVE payment."</em><br><br>This is always a <strong>LIE</strong>. In UPI, scanning a QR code = <strong>paying money OUT</strong>.<br><br>🚫 <strong>To RECEIVE money, you NEVER scan a QR code!</strong></div></div>
+          </div>
+          <div class="concept-slide" id="d5ls5">
+            <div class="helpline-banner" style="margin:0 0 14px;"><div style="font-size:0.9rem;font-weight:800;opacity:0.9;margin-bottom:6px;">INDIA'S NATIONAL CYBER CRIME HELPLINE</div><div class="hb-num">📞 1930</div><div class="hb-lbl">Available 24/7 · cybercrime.gov.in</div></div>
+            <div class="concept-box green"><div class="cb-title">⚡ The 60-Minute Golden Window</div><div class="cb-body">Call <strong>1930 within the FIRST 60 MINUTES</strong> of being scammed.<br><br>This gives the best chance of freezing the fraudster's account before they withdraw the money!</div></div>
+          </div>
+          <div class="concept-slide" id="d5ls6">
+            <div class="concept-box teal"><div class="cb-title">✅ What To Do If Scammed (Steps 1–3)</div><div class="cb-body">
+              1️⃣ <strong>Don't panic</strong> — act quickly<br><br>
+              2️⃣ <strong>Call 1930</strong> immediately — within the first hour<br><br>
+              3️⃣ <strong>Call your bank</strong> to block further transactions
+            </div></div>
+          </div>
+          <div class="concept-slide" id="d5ls7">
+            <div class="concept-box teal"><div class="cb-title">✅ What To Do If Scammed (Steps 4–6)</div><div class="cb-body">
+              4️⃣ <strong>Report at cybercrime.gov.in</strong><br><br>
+              5️⃣ <strong>Screenshot all evidence</strong> — messages, call logs, receipts<br><br>
+              6️⃣ <strong>Tell your parents</strong> — never hide it out of embarrassment
+            </div></div>
+          </div>
+        </div>
+        <div class="slide-dots" id="d5lLearnDots"></div>
+        <div class="slide-nav">
+          <button class="slide-nav-btn slide-prev-btn" id="d5lPrevBtn" onclick="d5lSlideNav(-1)" disabled>← Prev</button>
+          <button class="slide-nav-btn slide-next-btn" id="d5lNextBtn" onclick="d5lSlideNav(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- D5 MISSION -->
+    <div class="activity" id="d4-tab-1">
+      <div class="act-header"><div class="act-icon-wrap orange">🎯</div><div class="act-meta"><div class="act-label">Day 5 · Your Mission</div><div class="act-title">Daily Mission Checklist</div><div class="act-sub">Complete all 5 days to earn your Certificate!</div></div></div>
+      <div class="mission-card">
+        <div class="mission-title">DAY 5 GOAL — Banking Fraud</div>
+        <div class="mission-item"><div class="mission-check" id="mc-d5-1" onclick="toggleMission('d5-1',10)">☐</div><span class="mission-bullet">1</span><span class="mission-text">Learn about OTP, UPI, and QR code scams</span><button class="mission-go-btn" onclick="showDayTab(4,0,document.querySelectorAll('#tabBar4 .tab-btn')[0]);toggleMission('d5-1',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d5-2" onclick="toggleMission('d5-2',25)">☐</div><span class="mission-bullet">2</span><span class="mission-text">Complete the OTP/Bank Call scam simulation</span><button class="mission-go-btn" onclick="showDayTab(4,2,document.querySelectorAll('#tabBar4 .tab-btn')[2]);toggleMission('d5-2',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d5-3" onclick="toggleMission('d5-3',25)">☐</div><span class="mission-bullet">3</span><span class="mission-text">Complete the QR Code scam simulation</span><button class="mission-go-btn" onclick="showDayTab(4,3,document.querySelectorAll('#tabBar4 .tab-btn')[3]);toggleMission('d5-3',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d5-4" onclick="toggleMission('d5-4',10)">☐</div><span class="mission-bullet">4</span><span class="mission-text">Remember India's Cyber Crime Helpline: 1930</span><button class="mission-go-btn" onclick="showDayTab(4,4,document.querySelectorAll('#tabBar4 .tab-btn')[4]);toggleMission('d5-4',0)">Go →</button></div>
+        <div class="mission-item"><div class="mission-check" id="mc-d5-5" onclick="toggleMission('d5-5',50)">☐</div><span class="mission-bullet">5</span><span class="mission-text">Pass the Final Assessment (minimum 70%)</span><button class="mission-go-btn" onclick="showDayTab(4,5,document.querySelectorAll('#tabBar4 .tab-btn')[5]);toggleMission('d5-5',0)">Go →</button></div>
+      </div>
+      <div class="card" id="day5CompletionCard" style="display:none;text-align:center;"><div style="font-size:3rem;margin-bottom:10px;">🏆</div><div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--co-orange);">All 5 Days Complete!</div><div style="font-size:0.9rem;font-weight:600;color:var(--co-muted);margin:8px 0 16px;">🎉 You are a <strong>Cyber Safety Champion!</strong> Get your certificate!</div><button class="co-btn co-btn-orange" onclick="switchDay(6,document.querySelectorAll('.day-btn')[6])">🏆 Get Certificate →</button></div>
+    </div>
+
+    <!-- D5 SCAM — OTP Bank Call -->
+    <div class="activity" id="d4-tab-2">
+      <div class="act-header"><div class="act-icon-wrap red">🎭</div><div class="act-meta"><div class="act-label">Scam Simulation #9</div><div class="act-title">Fake Bank Call Asking OTP</div><div class="act-sub">The #1 cyber scam in India — learn to recognise it</div></div></div>
+      <div class="scam-screen">
+        <div class="scam-title">⚠️ FAKE BANK CALL SCAM</div>
+        <div class="scam-subtitle">Ananya's mother received this call while at home...</div>
+        <div class="fake-call" style="margin-top:24px;">
+          <strong>📞 Incoming Call from: +91-1800XXXXXX</strong><br><br>
+          <em>"Hello, am I speaking with Mrs. Sharma? I am calling from ICICI Bank fraud prevention department. We have detected an unauthorized transaction of ₹15,000 from your account."</em><br><br>
+          <em>"To reverse this immediately and protect your account, I need to verify your identity. Please share the <span style="color:#FF6B7A;font-weight:900;">6-digit OTP</span> that has just been sent to your registered mobile number. This is urgent — you have only 5 minutes."</em>
+        </div>
+        <div class="red-flags">
+          <div class="red-flags-title">🚩 Red Flags:</div>
+          <div class="red-flag-item">🚩 Real bank employees NEVER ask for OTP on phone — it's impossible by bank policy</div>
+          <div class="red-flag-item">🚩 The "5 minute" panic is designed to stop you from thinking clearly</div>
+          <div class="red-flag-item">🚩 If you share the OTP, scammer can access your mobile banking app</div>
+          <div class="red-flag-item">🚩 Real banks call from official numbers and ask you to CALL BACK — not give OTP</div>
+        </div>
+        <div style="font-family:'Fredoka One',cursive;color:var(--co-yellow);font-size:1.1rem;margin-top:16px;">📞 What should Mrs. Sharma do?</div>
+        <div class="scam-choices" id="scam9Choices">
+          <button class="scam-opt" onclick="pickScam9(this,0)">A. Share the OTP quickly to reverse the ₹15,000 transaction</button>
+          <button class="scam-opt" onclick="pickScam9(this,1)">B. Ask the caller for their employee ID, then share OTP</button>
+          <button class="scam-opt" onclick="pickScam9(this,2)">C. Hang up immediately, call the official ICICI Bank number (on the bank card), and report to 1930</button>
+          <button class="scam-opt" onclick="pickScam9(this,3)">D. Call back the same number to confirm the call was real</button>
+        </div>
+        <div class="scam-explain" id="scam9Explain"></div>
+      </div>
+    </div>
+
+    <!-- D5 SCAM — QR Code -->
+    <div class="activity" id="d4-tab-3">
+      <div class="act-header"><div class="act-icon-wrap indigo">🎭</div><div class="act-meta"><div class="act-label">Scam Simulation #10</div><div class="act-title">QR Code Payment Scam</div><div class="act-sub">You NEVER scan to RECEIVE money!</div></div></div>
+      <div class="scam-screen">
+        <div class="scam-title">⚠️ QR CODE SCAM ALERT</div>
+        <div class="scam-subtitle">Rohan sold a textbook for ₹300 on a local Facebook group. The buyer messaged him...</div>
+        <div class="fake-sms" style="margin-top:24px;background:#0A1A2A;border-color:#4F6DF5;">
+          <strong>💬 Facebook Messenger from: Buyer</strong><br><br>
+          Hi! I'll buy your textbook for ₹300. I'll pay via PhonePe. Just <span style="color:#FFD23F;font-weight:900;">scan this QR code I'm sending</span> and enter your PhonePe PIN to receive the payment. Super easy! Sending you the QR code now... [📷 QR IMAGE]
+        </div>
+        <div class="red-flags">
+          <div class="red-flags-title">🚩 Red Flags:</div>
+          <div class="red-flag-item">🚩 To RECEIVE money on PhonePe/GPay, you NEVER scan a QR code — only give your number/UPI ID</div>
+          <div class="red-flag-item">🚩 Scanning their QR code + entering PIN = SENDING money, not receiving</div>
+          <div class="red-flag-item">🚩 "Collect Request" approval also transfers money OUT of your account</div>
+          <div class="red-flag-item">🚩 Scammer is making it sound normal — "super easy" language</div>
+        </div>
+        <div style="font-family:'Fredoka One',cursive;color:var(--co-yellow);font-size:1.1rem;margin-top:16px;">📷 What should Rohan do?</div>
+        <div class="scam-choices" id="scam10Choices">
+          <button class="scam-opt" onclick="pickScam10(this,0)">A. Scan the QR code and enter PIN to receive ₹300</button>
+          <button class="scam-opt" onclick="pickScam10(this,1)">B. Ask the buyer to scan MY UPI QR code or send money to MY phone number</button>
+          <button class="scam-opt" onclick="pickScam10(this,2)">C. Accept the QR code and check if the amount is correct first</button>
+          <button class="scam-opt" onclick="pickScam10(this,3)">D. Install Google Pay first and try from there</button>
+        </div>
+        <div class="scam-explain" id="scam10Explain"></div>
+      </div>
+    </div>
+
+    <!-- D5 HELPLINE -->
+    <div class="activity" id="d4-tab-4">
+      <div class="act-header"><div class="act-icon-wrap green">📞</div><div class="act-meta"><div class="act-label">Day 5 · Remember This!</div><div class="act-title">India's Cyber Safety Resources</div><div class="act-sub">Save these numbers — they can save your money!</div></div></div>
+      <div class="card">
+        <div class="helpline-banner" style="margin-top:0;">
+          <div style="font-size:0.9rem;font-weight:800;opacity:0.9;margin-bottom:6px;">🚨 NATIONAL CYBER CRIME HELPLINE</div>
+          <div class="hb-num">📞 1930</div>
+          <div class="hb-lbl">Report immediately — faster you call, more chance of recovering money!</div>
+        </div>
+        <div class="icon-tiles">
+          <div class="icon-tile"><div class="it-ico">🌐</div><div class="it-name">cybercrime.gov.in</div><div class="it-desc">File official complaint online</div></div>
+          <div class="icon-tile"><div class="it-ico">👮</div><div class="it-name">Local Cyber Cell</div><div class="it-desc">Visit nearest police cyber cell</div></div>
+          <div class="icon-tile"><div class="it-ico">🏦</div><div class="it-name">Call Your Bank</div><div class="it-desc">Block cards immediately after fraud</div></div>
+          <div class="icon-tile"><div class="it-ico">📱</div><div class="it-name">CERT-In</div><div class="it-desc">cert-in.org.in for cyber incidents</div></div>
+        </div>
+        <div class="concept-box green">
+          <div class="cb-title">⚡ GOLDEN RULE — The 60-Minute Window</div>
+          <div class="cb-body">If you are scammed, calling <strong>1930</strong> within the first 60 minutes gives the best chance of freezing the fraudster's account before they can withdraw the money. After 60 minutes, recovery becomes much harder. <strong>Speed saves money!</strong></div>
+        </div>
+        <div class="concept-box yellow">
+          <div class="cb-title">📋 What to Tell the Helpline</div>
+          <div class="cb-body">
+            📌 Your full name and phone number<br>
+            📌 Bank name and last 4 digits of account<br>
+            📌 Transaction ID and amount lost<br>
+            📌 Date and time of fraud<br>
+            📌 Scammer's phone number/UPI ID if known
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D5 FINAL QUIZ -->
+    <div class="activity" id="d4-tab-5">
+      <div class="act-header"><div class="act-icon-wrap yellow">🧠</div><div class="act-meta"><div class="act-label">Day 5 · FINAL ASSESSMENT</div><div class="act-title">Cyber Safety Mastery Quiz</div><div class="act-sub">Score 70%+ to earn your National Cyber Safety Certificate! 🏆</div></div></div>
+      <div class="quiz-wrap">
+        <div class="q-progress-bar"><div class="q-progress-fill" id="d5qBar" style="width:0%"></div></div>
+        <div class="q-dots" id="d5qdots"></div>
+        <div id="d5quizMain">
+          <div class="q-card">
+            <div class="q-meta"><span class="q-level" id="d5qLvl">⭐ Easy</span><span class="q-counter" id="d5qCounter">Q 1 / 12</span><span class="q-score-badge" id="d5qScoreBadge">⭐ 0</span></div>
+            <div class="q-emoji" id="d5qEmo">💳</div>
+            <div class="q-text" id="d5qTxt">Loading...</div>
+            <div id="d5qOpts"></div>
+            <div class="q-feedback" id="d5qFeed"></div>
+            <button class="co-btn co-btn-orange" id="d5qNextBtn" onclick="d5nextQ()" style="display:none;width:100%;margin-top:14px;">Next Question →</button>
+          </div>
+        </div>
+        <div id="d5qScoreScreen" style="display:none">
+          <div class="q-score-screen card">
+            <div class="qs-trophy" id="d5sTrophy">🏆</div>
+            <div class="qs-big" id="d5sBig">0</div>
+            <div class="qs-total">out of 12</div>
+            <div class="qs-stars" id="d5sStars">⭐</div>
+            <div class="qs-msg" id="d5sMsg">Keep trying!</div>
+            <div id="d5certMsg" style="font-weight:700;font-size:0.9rem;color:var(--co-muted);margin:10px 0;"></div>
+            <button class="co-btn co-btn-orange mt16" onclick="initD5Quiz()">🔄 Try Again</button>
+            <button class="co-btn co-btn-teal mt16" style="margin-left:8px;" id="d5certBtn" onclick="switchDay(6,document.querySelectorAll('.day-btn')[6])" style="display:none;">🏆 Get Certificate →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /dayPanel4 -->
+
+<!-- ═══════════════════════════════════════════ PROGRESS ═══════════════════════════════════════════ -->
+<div class="day-panel" id="dayPanel5">
+  <div class="page-wrap">
+    <div class="act-header" style="margin-top:8px;">
+      <div class="act-icon-wrap indigo">📊</div>
+      <div class="act-meta"><div class="act-label">Your Journey</div><div class="act-title">Progress Dashboard</div><div class="act-sub">Track your Cyber Safety Mastery journey</div></div>
+    </div>
+    <div class="card">
+      <div class="progress-grid">
+        <div class="progress-stat"><div class="ps-num" style="color:var(--co-orange);" id="dashStreak">0🔥</div><div class="ps-lbl">Day Streak</div></div>
+        <div class="progress-stat"><div class="ps-num" style="color:var(--co-yellow);" id="dashPoints">0⭐</div><div class="ps-lbl">Total Points</div></div>
+        <div class="progress-stat"><div class="ps-num" style="color:var(--co-teal);" id="dashDays">0/5</div><div class="ps-lbl">Days Done</div></div>
+        <div class="progress-stat"><div class="ps-num" style="color:var(--co-purple);" id="dashBadges">0🏅</div><div class="ps-lbl">Badges Earned</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">📅 Day-by-Day Progress</div>
+      <div id="dayProgressBars"></div>
+    </div>
+    <div class="card">
+      <div class="section-title">🏅 Badges Earned</div>
+      <div class="badge-rack" id="badgeRack"></div>
+    </div>
+    <div class="card">
+      <div class="section-title">🛡️ Your Cyber Safety Score</div>
+      <div style="text-align:center;padding:20px;">
+        <div style="font-family:'Fredoka One',cursive;font-size:4rem;color:var(--co-orange);" id="cyberScore">0%</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--co-muted);">Complete all 5 days and quizzes to improve your score</div>
+        <div style="margin-top:12px;height:12px;background:var(--co-border);border-radius:6px;overflow:hidden;">
+          <div id="cyberScoreBar" style="height:100%;border-radius:6px;background:linear-gradient(90deg,var(--co-orange),var(--co-teal));width:0%;transition:width 1s ease;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ CERTIFICATE ═══════════════════════════════════════════ -->
+<div class="day-panel" id="dayPanel6">
+  <div class="page-wrap">
+    <div class="act-header" style="margin-top:8px;">
+      <div class="act-icon-wrap yellow">🏆</div>
+      <div class="act-meta"><div class="act-label">Your Achievement</div><div class="act-title">National Cyber Safety Certificate</div><div class="act-sub">Complete 5 days + score 70%+ to unlock!</div></div>
+    </div>
+    <div class="card" style="text-align:center;padding:14px;">
+      <input class="cert-input-name" id="certNameInput" placeholder="✏️ Enter your full name here..." oninput="updateCertName()">
+    </div>
+    <div class="cert-wrap" id="certWrap">
+      <svg style="height:40px;width:auto;margin-bottom:4px;" viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg"><text x="0" y="54" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="60" font-weight="900" fill="#6844A8">codju</text><ellipse cx="152" cy="8" rx="8" ry="5" fill="#4CAF50" transform="rotate(-30 152 8)"/></svg>
+      <div class="cert-tag">Cyber Safety Education Platform</div>
+      <div style="font-size:2.5rem;margin:12px 0;">🛡️🏆🛡️</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:0.9rem;color:var(--co-orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">National Cyber Safety Certificate</div>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--co-muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;">This is to proudly certify that</div>
+      <div class="cert-name" id="certName">Your Name Here</div>
+      <div style="font-size:0.85rem;font-weight:700;color:var(--co-muted);margin-bottom:6px;">has successfully completed the</div>
+      <div class="cert-course">🛡️ Cyber Safety Mastery — 5 Day Challenge</div>
+      <div style="font-size:0.8rem;font-weight:600;color:var(--co-muted);margin:6px 0;">by Codju · Grade 4–10 · Indian Schools Program</div>
+      <div class="cert-score" id="certScore">🏆 Score: -- / 60 pts</div>
+      <div class="cert-badge-row">
+        <div class="cert-badge">🛡️ Safety Starter</div>
+        <div class="cert-badge">🔐 Password Pro</div>
+        <div class="cert-badge">🕵️ Scam Spotter</div>
+        <div class="cert-badge">📱 Social Shield</div>
+        <div class="cert-badge">💳 Fraud Fighter</div>
+      </div>
+      <div class="cert-helpline">📞 Remember: CYBER CRIME HELPLINE — 1930</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
+        <div style="border-top:2px solid var(--co-border);padding-top:8px;font-size:0.75rem;font-weight:700;color:var(--co-muted);">📅 Date of Completion<br><strong id="certDate">--</strong></div>
+        <div style="border-top:2px solid var(--co-border);padding-top:8px;font-size:0.75rem;font-weight:700;color:var(--co-muted);">🔢 Certificate ID<br><strong id="certId">NCSC-2025-XXXXXX</strong></div>
+      </div>
+      <div class="cert-id">🔍 Verify at: verify.codju.com/ncsc · Issued by Codju International EdTech</div>
+    </div>
+    <div style="text-align:center;margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button class="co-btn co-btn-orange" onclick="generateCert()" style="font-size:1rem;padding:12px 28px;">Generate Certificate</button>
+      <button class="co-btn co-btn-teal" onclick="downloadCert()" id="downloadCertBtn" style="font-size:1rem;padding:12px 28px;display:none;">Download as PDF</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════ GLOBAL STATE ══════════════════════════════
+let totalPoints = 0;
+let streak = 0;
+let unlockedDays = [true, false, false, false, false];
+let completedMissions = {};
+let dayScores = [0, 0, 0, 0, 0];
+
+// ══════════════════════════════ CONCEPT SLIDER FACTORY ══════════════════════════════
+function makeSlider(sliderId, barId, counterId, prevId, nextId, dotsId, totalSlides, onFinish) {
+  let cur = 0;
+  const getSlides = () => document.getElementById(sliderId).querySelectorAll('.concept-slide');
+  const bar = document.getElementById(barId);
+  const counter = document.getElementById(counterId);
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
+  const dotsEl = document.getElementById(dotsId);
+
+  // build dots
+  for (let i = 0; i < totalSlides; i++) {
+    const d = document.createElement('span');
+    d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    d.onclick = (function(idx){ return function(){ goTo(idx); }; })(i);
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(idx) {
+    getSlides()[cur].classList.remove('active');
+    dotsEl.children[cur].classList.remove('active');
+    dotsEl.children[cur].classList.add('done');
+    cur = idx;
+    getSlides()[cur].classList.add('active');
+    dotsEl.children[cur].classList.remove('done');
+    dotsEl.children[cur].classList.add('active');
+    bar.style.width = ((cur + 1) / totalSlides * 100) + '%';
+    counter.textContent = 'Concept ' + (cur + 1) + ' of ' + totalSlides;
+    prevBtn.disabled = cur === 0;
+    const isLast = cur === totalSlides - 1;
+    nextBtn.textContent = isLast ? 'Start Activities 🚀' : 'Next →';
+    nextBtn.className = 'slide-nav-btn ' + (isLast ? 'slide-finish-btn' : 'slide-next-btn');
+  }
+
+  return {
+    nav: function(dir) {
+      if (dir > 0 && cur === totalSlides - 1) { if (onFinish) onFinish(); return; }
+      const next = Math.min(Math.max(cur + dir, 0), totalSlides - 1);
+      goTo(next);
+    }
+  };
+}
+
+// Init all sliders after DOM ready
+let sliders = {};
+function initSliders() {
+  // Day 1 Learn — 6 slides
+  sliders.d1 = makeSlider('d1LearnSlider','d1LearnBar','d1LearnCounter','d1PrevBtn','d1NextBtn','d1LearnDots', 10, function(){ showDayTab(0,1,document.querySelectorAll('#tabBar0 .tab-btn')[1]); });
+  window.d1SlideNav = function(d){ sliders.d1.nav(d); };
+
+  // Day 2 Learn — 5 slides
+  sliders.d2 = makeSlider('d2LearnSlider','d2LearnBar','d2LearnCounter','d2PrevBtn','d2NextBtn','d2LearnDots', 8, function(){ showDayTab(1,1,document.querySelectorAll('#tabBar1 .tab-btn')[1]); });
+  window.d2SlideNav = function(d){ sliders.d2.nav(d); };
+
+  // Day 3 Learn — 4 slides
+  sliders.d3 = makeSlider('d3LearnSlider','d3LearnBar','d3LearnCounter','d3PrevBtn','d3NextBtn','d3LearnDots', 7, function(){ showDayTab(2,1,document.querySelectorAll('#tabBar2 .tab-btn')[1]); });
+  window.d3SlideNav = function(d){ sliders.d3.nav(d); };
+
+  // Day 4 Learn — 4 slides
+  sliders.d4l = makeSlider('d4LearnSlider','d4LearnBar','d4LearnCounter','d4lPrevBtn','d4lNextBtn','d4lLearnDots', 7, function(){ showDayTab(3,1,document.querySelectorAll('#tabBar3 .tab-btn')[1]); });
+  window.d4lSlideNav = function(d){ sliders.d4l.nav(d); };
+
+  // Day 5 Learn — 5 slides
+  sliders.d5l = makeSlider('d5LearnSlider','d5LearnBar','d5LearnCounter','d5lPrevBtn','d5lNextBtn','d5lLearnDots', 8, function(){ showDayTab(4,1,document.querySelectorAll('#tabBar4 .tab-btn')[1]); });
+  window.d5lSlideNav = function(d){ sliders.d5l.nav(d); };
+}
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initSliders); } else { initSliders(); }
+
+// ══════════════════════════════ CONFETTI ══════════════════════════════
+function confetti() {
+  const w = document.getElementById('confWrap');
+  const cols = ['#FF6B1A','#00B4A6','#FFD23F','#7B5EA7','#2DC653','#fff','#E63946'];
+  for (let i = 0; i < 70; i++) {
+    const p = document.createElement('div'); p.className = 'conf-p';
+    const c = cols[Math.floor(Math.random() * cols.length)];
+    p.style.cssText = `left:${Math.random()*100}vw;top:-10px;background:${c};width:${6+Math.random()*10}px;height:${6+Math.random()*10}px;border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${1.5+Math.random()*2.5}s;animation-delay:${Math.random()*.6}s`;
+    w.appendChild(p); setTimeout(() => p.remove(), 5000);
+  }
+}
+
+// ══════════════════════════════ NAVIGATION ══════════════════════════════
+function switchDay(idx, btn) {
+  if (idx < 5 && !unlockedDays[idx] && idx !== 5 && idx !== 6) {
+    alert('🔒 Complete Day ' + idx + ' first to unlock this day!');
+    return;
+  }
+  document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('dayPanel' + idx).classList.add('active');
+  btn.classList.add('active');
+  if (idx === 5) updateDashboard();
+  if (idx === 6) updateCertDate();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function showDayTab(dayIdx, tabIdx, btn) {
+  const panel = document.getElementById('dayPanel' + dayIdx);
+  panel.querySelectorAll('.activity').forEach(a => a.classList.remove('active'));
+  panel.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('d' + dayIdx + '-tab-' + tabIdx).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+}
+
+function unlockDay(dayIdx) {
+  if (dayIdx < 5) {
+    unlockedDays[dayIdx] = true;
+    streak = Math.min(streak + 1, 5);
+    document.getElementById('lock' + dayIdx).textContent = '✅ Open';
+    document.getElementById('dayBtn' + dayIdx).classList.add('unlocked');
+    addPoints(100);
+    confetti();
+    alert('🎉 Day ' + (dayIdx + 1) + ' Unlocked! 🔥 Streak: ' + streak);
+    document.getElementById('streakCount').textContent = streak;
+  }
+}
+
+function addPoints(pts) {
+  totalPoints += pts;
+  document.getElementById('totalPoints').textContent = totalPoints;
+}
+
+// ══════════════════════════════ MISSION CHECKLIST ══════════════════════════════
+function toggleMission(id, pts) {
+  if (completedMissions[id]) return;
+  completedMissions[id] = true;
+  const el = document.getElementById('mc-' + id);
+  el.textContent = '✅';
+  el.classList.add('done');
+  addPoints(pts);
+  checkDayCompletion(id.charAt(1));
+}
+
+function checkDayCompletion(dayNum) {
+  const keys = ['1','2','3','4','5'];
+  const prefix = 'd' + dayNum + '-';
+  const allDone = keys.every(k => completedMissions[prefix + k]);
+  if (allDone) {
+    const cardId = 'day' + ['one','two','three','four','five'][parseInt(dayNum)-1] + 'CompletionCard';
+    const card = document.getElementById('day' + dayNum + 'CompletionCard');
+    if (card) { card.style.display = 'block'; confetti(); }
+  }
+}
+
+// ══════════════════════════════ DAY 1 TRUE/FALSE ══════════════════════════════
+const d1TfData = [
+  {s:'You should share your home address in online game chats to make new friends.', ans:false, exp:'Never share your address online. Strangers can misuse this information.'},
+  {s:'A digital footprint is the data trail you leave when using the internet.', ans:true, exp:'Correct! Every website visited, post made, and app used creates your digital footprint.'},
+  {s:'It is safe to click on pop-ups that say "Congratulations, you have WON an iPhone!"', ans:false, exp:'These are always scams! Real prize competitions are never announced via random pop-ups.'},
+  {s:'Your OTP (One Time Password) should be shared only with bank employees over phone.', ans:false, exp:'NEVER share OTP with anyone — including people claiming to be bank employees. Banks never ask for OTP!'},
+  {s:'Logging out of accounts after using shared computers helps protect your data.', ans:true, exp:'Correct! Always log out on shared/school computers to prevent unauthorized access.'},
+  {s:'A strong password can be your pet\'s name and birth year, like "Tommy2010".', ans:false, exp:'Predictable passwords are easy to guess. Use random mix of uppercase, lowercase, numbers and symbols!'},
+  {s:'Cyber safety means protecting yourself and your information when online.', ans:true, exp:'Exactly right! Cyber safety covers everything from passwords to scam awareness.'},
+  {s:'It is safe to accept friend requests from anyone on social media to grow your network.', ans:false, exp:'Only accept requests from people you know in real life. Fake profiles are very common.'},
+  {s:'Encryption is a method of scrambling data so only authorized people can read it.', ans:true, exp:'Correct! Encrypted websites show "https://" and a padlock icon in the browser.'},
+  {s:'Once you delete a social media post, it is permanently gone and cannot be recovered.', ans:false, exp:'Deleted posts can still be seen via screenshots, caches, or by people who saw them. Think before you post!'},
+];
+
+let d1TfAnswered = 0, d1TfScore = 0;
+function buildD1TF() {
+  const c = document.getElementById('d1TfContainer');
+  c.innerHTML = '';
+  d1TfData.forEach((item, i) => {
+    const div = document.createElement('div'); div.className = 'tf-item'; div.id = 'tfi-' + i;
+    div.innerHTML = `<div class="tf-stmt">${i+1}. ${item.s}</div>
+      <div class="tf-btns">
+        <button class="tf-btn t-btn" onclick="ansD1TF(${i},true,this)">✅ TRUE</button>
+        <button class="tf-btn f-btn" onclick="ansD1TF(${i},false,this)">❌ FALSE</button>
+      </div>
+      <div class="tf-exp" id="tfe-${i}"></div>`;
+    c.appendChild(div);
+  });
+}
+function ansD1TF(i, val, btn) {
+  const item = d1TfData[i];
+  const container = document.getElementById('tfi-' + i);
+  container.querySelectorAll('.tf-btn').forEach(b => b.disabled = true);
+  const correct = val === item.ans;
+  if (correct) { btn.classList.add('right-ans'); d1TfScore++; }
+  else {
+    btn.classList.add('wrong-ans');
+    container.querySelectorAll('.tf-btn').forEach(b => {
+      if ((b.textContent.includes('TRUE') && item.ans) || (b.textContent.includes('FALSE') && !item.ans)) b.classList.add('right-ans');
+    });
+  }
+  const exp = document.getElementById('tfe-' + i);
+  exp.textContent = (correct ? '✅ ' : '💡 ') + item.exp; exp.classList.add('show');
+  d1TfAnswered++;
+  if (d1TfAnswered === d1TfData.length) {
+    document.getElementById('d1tfScore').textContent = `🎯 Score: ${d1TfScore}/${d1TfData.length} — ${d1TfScore >= 8 ? '🎉 Excellent!' : 'Keep learning!'}`;
+    document.getElementById('d1tfScore').style.background = d1TfScore >= 8 ? '#F0FFF5' : '#FFF5F0';
+    document.getElementById('d1tfScore').style.borderColor = d1TfScore >= 8 ? 'var(--co-green)' : 'var(--co-orange)';
+    document.getElementById('d1tfScore').style.color = d1TfScore >= 8 ? 'var(--co-green)' : 'var(--co-orange)';
+    addPoints(d1TfScore * 3);
+    if (d1TfScore >= 8) confetti();
+  }
+}
+buildD1TF();
+
+// ══════════════════════════════ DAY 1 SORT IT ══════════════════════════════
+const d1SortChips = [
+  {id:'sc1', label:'🔐 Using a strong password', ans:'safe'},
+  {id:'sc2', label:'📍 Sharing home address in game chat', ans:'unsafe'},
+  {id:'sc3', label:'🔒 Logging out after use', ans:'safe'},
+  {id:'sc4', label:'🖱️ Clicking unknown pop-up links', ans:'unsafe'},
+  {id:'sc5', label:'👨‍👩‍👧 Telling parents about online threats', ans:'safe'},
+  {id:'sc6', label:'📱 Sharing OTP with callers', ans:'unsafe'},
+  {id:'sc7', label:'🔑 Different passwords for each app', ans:'safe'},
+  {id:'sc8', label:'📸 Posting school uniform photos online', ans:'unsafe'},
+  {id:'sc9', label:'🔔 Enabling 2FA on accounts', ans:'safe'},
+  {id:'sc10', label:'💾 Downloading from unknown websites', ans:'unsafe'},
+];
+let d1DragTarget = null;
+function buildD1Sort() {
+  const pool = document.getElementById('d1SortPool');
+  pool.innerHTML = '';
+  d1SortChips.forEach(chip => {
+    const d = document.createElement('div');
+    d.className = 'sort-chip'; d.id = chip.id; d.dataset.ans = chip.ans;
+    d.textContent = chip.label; d.draggable = true;
+    d.addEventListener('dragstart', e => { d1DragTarget = e.target; });
+    pool.appendChild(d);
+  });
+}
+function doD1Sort(e, zone) {
+  e.preventDefault();
+  const bin = document.getElementById(zone === 'safe' ? 'd1BinSafe' : 'd1BinUnsafe');
+  bin.classList.remove('drag-over');
+  if (!d1DragTarget) return;
+  const correct = d1DragTarget.dataset.ans === zone;
+  const dc = document.createElement('div');
+  dc.className = 'dropped-chip ' + (correct ? 'right-drop' : 'wrong-drop');
+  dc.innerHTML = `<span>${correct ? '✅' : '❌'} ${d1DragTarget.textContent}</span><button class="rm-btn" onclick="this.parentElement.remove();document.getElementById('${d1DragTarget.id}').style.display='';checkD1SortDone()">✕</button>`;
+  bin.appendChild(dc); d1DragTarget.style.display = 'none'; d1DragTarget = null; checkD1SortDone();
+}
+function checkD1SortDone() {
+  const bins = document.querySelectorAll('#dayPanel0 .dropped-chip');
+  const correct = document.querySelectorAll('#dayPanel0 .right-drop').length;
+  const total = bins.length;
+  const max = d1SortChips.length;
+  if (total === max) {
+    document.getElementById('d1SortResult').textContent = correct === max ? '🎉 Perfect! All sorted correctly!' : `Score: ${correct}/${max} — Reset and try again!`;
+    if (correct === max) { confetti(); addPoints(30); }
+  } else { document.getElementById('d1SortResult').textContent = total ? `Sorted ${total}/${max}` : ''; }
+}
+function resetD1Sort() {
+  document.getElementById('d1BinSafe').innerHTML = '<div class="bin-label teal">✅ SAFE Online Action</div>';
+  document.getElementById('d1BinUnsafe').innerHTML = '<div class="bin-label orange">❌ UNSAFE Online Action</div>';
+  d1SortChips.forEach(c => { const el = document.getElementById(c.id); if(el) el.style.display = ''; });
+  document.getElementById('d1SortResult').textContent = '';
+}
+buildD1Sort();
+
+// ══════════════════════════════ SCAM SIMULATIONS ══════════════════════════════
+function pickScam1(el, choice) {
+  document.querySelectorAll('#scam1Choices .scam-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === 2;
+  el.classList.add(correct ? 'scam-right' : 'scam-wrong');
+  if (!correct) document.querySelectorAll('#scam1Choices .scam-opt')[2].classList.add('scam-right');
+  const exp = document.getElementById('scam1Explain');
+  exp.textContent = correct ? '✅ Correct! Real banks NEVER send KYC update links via SMS. The URL "sbi-kyc-update.xyz" is fake — real SBI website is sbi.co.in. Always visit the bank branch in person for KYC updates!' : '❌ Sharing any information or clicking the link would have led to financial fraud. The correct action is to delete the message and visit your real SBI branch for KYC.';
+  exp.classList.add('show');
+  if (correct) { addPoints(25); confetti(); }
+}
+function pickScam4(el, choice) {
+  document.querySelectorAll('#scam4Choices .scam-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === 2;
+  el.classList.add(correct ? 'scam-right' : 'scam-wrong');
+  if (!correct) document.querySelectorAll('#scam4Choices .scam-opt')[2].classList.add('scam-right');
+  const exp = document.getElementById('scam4Explain');
+  exp.textContent = correct ? '✅ Correct! For online sales, only deal with buyers who can meet you in person for cash payment. Never share UPI details or scan QR codes to "receive" money from unknown buyers!' : '❌ In this scam, the "buyer" would have sent a COLLECT request (money goes OUT of your account) or a QR code to steal money. Always insist on in-person payment for OLX/Facebook Marketplace deals.';
+  exp.classList.add('show');
+  if (correct) { addPoints(25); confetti(); }
+}
+function pickScam2(el, choice) {
+  document.querySelectorAll('#scam2Choices .scam-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === 2;
+  el.classList.add(correct ? 'scam-right' : 'scam-wrong');
+  if (!correct) document.querySelectorAll('#scam2Choices .scam-opt')[2].classList.add('scam-right');
+  const exp = document.getElementById('scam2Explain');
+  exp.textContent = correct ? '✅ Correct! Electricity companies like BESCOM contact customers through official channels, not WhatsApp personal numbers. Always verify by visiting bescom.org or calling the official helpline on the electricity bill itself.' : '❌ If you called the scammer, they would have asked you to install AnyDesk (remote access software) to "fix" the issue — giving them complete access to your banking apps. Never install apps on a stranger\'s request!';
+  exp.classList.add('show');
+  if (correct) { addPoints(25); confetti(); }
+}
+function pickScam5(el, choice) {
+  document.querySelectorAll('#scam5Choices .scam-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === 2;
+  el.classList.add(correct ? 'scam-right' : 'scam-wrong');
+  if (!correct) document.querySelectorAll('#scam5Choices .scam-opt')[2].classList.add('scam-right');
+  const exp = document.getElementById('scam5Explain');
+  exp.textContent = correct ? '✅ Correct! Government scholarships like PM scholarships are available at scholarship.gov.in and NEVER charge a registration fee. The email domain ".net" is fake — government sites end in .gov.in' : '❌ Real government scholarships never ask for fees. Sharing Aadhaar + bank details via email would lead to identity theft and bank fraud. Always verify at the official scholarship.gov.in portal.';
+  exp.classList.add('show');
+  if (correct) { addPoints(25); confetti(); }
+}
+function pickScam6(el, choice) {
+  document.querySelectorAll('#scam6Choices .scam-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === 2;
+  el.classList.add(correct ? 'scam-right' : 'scam-wrong');
+  if (!correct) document.querySelectorAll('#scam6Choices .scam-opt')[2].classList.add('scam-right');
+  const exp = document.getElementById('scam6Explain');
+  exp.textContent = correct ? '✅ Correct! Free UC/V-Bucks/Diamonds websites are ALWAYS scams. They steal your game account credentials. Krafton/Garena give UC only through the official in-game store or authorized retailers.' : '❌ Even sharing just your BGMI ID on that site puts your account at risk. The site uses phishing to steal login credentials. Official game platforms never give free currency through third-party websites!';
+  exp.classList.add('show');
+  if (correct) { addPoints(25); confetti(); }
+}
+function pickScam9(el, choice) {
+  document.querySelectorAll('#scam9Choices .scam-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === 2;
+  el.classList.add(correct ? 'scam-right' : 'scam-wrong');
+  if (!correct) document.querySelectorAll('#scam9Choices .scam-opt')[2].classList.add('scam-right');
+  const exp = document.getElementById('scam9Explain');
+  exp.textContent = correct ? '✅ Correct! Hang up and call ICICI Bank\'s official number (1800-10-888888 printed on your debit card). Real bank employees NEVER ask for OTP on phone. Report to 1930 if you suspect fraud.' : '❌ No bank employee can legitimately ask for your OTP over phone. This is the most common banking scam in India. Once you share an OTP, the scammer can instantly log into your mobile banking and transfer all your money!';
+  exp.classList.add('show');
+  if (correct) { addPoints(25); confetti(); }
+}
+function pickScam10(el, choice) {
+  document.querySelectorAll('#scam10Choices .scam-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === 1;
+  el.classList.add(correct ? 'scam-right' : 'scam-wrong');
+  if (!correct) document.querySelectorAll('#scam10Choices .scam-opt')[1].classList.add('scam-right');
+  const exp = document.getElementById('scam10Explain');
+  exp.textContent = correct ? '✅ Correct! To RECEIVE money on any UPI app, you simply share your phone number or UPI ID — you NEVER scan anything! Scanning a QR code + entering PIN = SENDING money. This golden rule can save your entire savings!' : '❌ Scanning the buyer\'s QR code and entering your PIN would have transferred money FROM your account TO the scammer. Remember: Scan QR = Pay money. To receive money, only share your UPI ID or phone number!';
+  exp.classList.add('show');
+  if (correct) { addPoints(25); confetti(); }
+}
+
+// ══════════════════════════════ SPOT FLAGS (Day 3) ══════════════════════════════
+let spotFlagCount = 0;
+const totalSpotFlags = 3; // correct flags: sf1, sf2, sf3, sf5
+function tapSpotFlag(el, isCorrect) {
+  if (el.classList.contains('done')) return;
+  el.classList.add('done');
+  if (isCorrect === 'true') {
+    el.style.background = 'rgba(45,198,83,0.3)'; el.style.border = '1.5px solid #2DC653';
+    spotFlagCount++;
+    document.getElementById('spotFlagStatus').textContent = `🎯 Found ${spotFlagCount} red flag${spotFlagCount > 1 ? 's' : ''}! Keep looking...`;
+    if (spotFlagCount >= 3) {
+      document.getElementById('spotFlagScore').textContent = '🎉 Great! You spotted the phishing red flags!';
+      confetti(); addPoints(20);
+    }
+  } else {
+    el.style.background = 'rgba(230,57,70,0.2)'; el.style.border = '1.5px solid var(--co-red)';
+    setTimeout(() => { el.style.background = ''; el.style.border = ''; el.classList.remove('done'); }, 600);
+  }
+}
+
+// ══════════════════════════════ DAY 2 FILL BLANKS ══════════════════════════════
+const d2FitbData = [
+  {template:'A strong password should have at least ___ characters.', blank:'8', ans:'8'},
+  {template:'___ adds an extra layer by sending a code to your phone after login.', blank:'2FA', ans:'2FA'},
+  {template:'Trying thousands of passwords automatically is called ___ force attack.', blank:'Brute', ans:'BRUTE'},
+  {template:'Malware that records your keystrokes to steal passwords is called a ___.', blank:'Keylogger', ans:'KEYLOGGER'},
+  {template:'You should use a ___ password for every different account or app.', blank:'Different', ans:'DIFFERENT'},
+];
+const d2WordBankWords = ['8', '2FA', 'BRUTE', 'KEYLOGGER', 'DIFFERENT', 'PHISHING', 'ENCRYPT'];
+let d2SelWord = null;
+
+function buildD2FITB() {
+  const bank = document.getElementById('d2WordBank');
+  bank.innerHTML = '<div style="font-size:0.72rem;font-weight:800;color:var(--co-muted);text-transform:uppercase;letter-spacing:1px;width:100%;margin-bottom:4px;">📦 Word Bank — tap a word first:</div>';
+  d2WordBankWords.forEach(w => {
+    const ch = document.createElement('div'); ch.className = 'wb-chip'; ch.dataset.word = w; ch.textContent = w;
+    ch.onclick = () => selectD2Word(ch); bank.appendChild(ch);
+  });
+  const cont = document.getElementById('d2FitbContainer'); cont.innerHTML = '';
+  d2FitbData.forEach((item, i) => {
+    const parts = item.template.split('___');
+    const p = document.createElement('div'); p.className = 'fitb-sentence';
+    p.innerHTML = parts[0] + `<span class="fitb-blank" id="d2blank${i}" data-ans="${item.ans}" onclick="fillD2Blank(this)">___</span>` + (parts[1] || '');
+    cont.appendChild(p);
+  });
+}
+function selectD2Word(chip) {
+  if (chip.classList.contains('used')) return;
+  document.querySelectorAll('#d2WordBank .wb-chip').forEach(c => c.style.outline = '');
+  d2SelWord = chip.dataset.word; chip.style.outline = '3px solid var(--co-orange)';
+}
+function fillD2Blank(blank) {
+  if (!d2SelWord) { alert('👆 First tap a word from the Word Bank!'); return; }
+  if (blank.classList.contains('correct')) return;
+  blank.textContent = d2SelWord;
+  if (d2SelWord === blank.dataset.ans) {
+    blank.classList.add('correct');
+    document.querySelectorAll('#d2WordBank .wb-chip').forEach(c => { if (c.dataset.word === d2SelWord) { c.classList.add('used'); c.style.outline = ''; } });
+  } else { blank.classList.add('wrong'); setTimeout(() => { blank.classList.remove('wrong'); blank.textContent = '___'; }, 700); }
+  d2SelWord = null; document.querySelectorAll('#d2WordBank .wb-chip').forEach(c => c.style.outline = '');
+  const done = document.querySelectorAll('#d2FitbContainer .fitb-blank.correct').length;
+  const total = d2FitbData.length;
+  document.getElementById('d2fitbScore').textContent = done === total ? '🎉 All correct! Well done!' : `${done}/${total} correct`;
+  if (done === total) { confetti(); addPoints(20); }
+}
+function resetD2FITB() {
+  d2SelWord = null; buildD2FITB(); document.getElementById('d2fitbScore').textContent = '';
+}
+buildD2FITB();
+
+// ══════════════════════════════ DAY 2 MATCH IT ══════════════════════════════
+const d2MatchData = [
+  {left:'🔑 Brute Force', right:'Guessing many passwords automatically'},
+  {left:'🎣 Phishing', right:'Fake website stealing your login'},
+  {left:'⌨️ Keylogger', right:'Records every key you type'},
+  {left:'📱 2FA', right:'Extra code sent to your phone'},
+  {left:'💀 Shoulder Surfing', right:'Watching you type your password'},
+];
+let d2MatchSel = {left: null, right: null}, d2MatchedCount = 0;
+function buildD2Match() {
+  d2MatchSel = {left: null, right: null}; d2MatchedCount = 0;
+  const wrap = document.getElementById('d2MatchWrap');
+  const shuffled = [...d2MatchData].sort(() => Math.random() - 0.5);
+  const leftItems = d2MatchData.map((item, i) => `<div class="match-left-item" id="ml${i}" data-idx="${i}" onclick="d2MatchLeft(this)">${item.left}</div>`).join('');
+  const rightItems = shuffled.map((item, i) => {
+    const orig = d2MatchData.findIndex(x => x.right === item.right);
+    return `<div class="match-right-item" id="mr${i}" data-idx="${orig}" onclick="d2MatchRight(this)">${item.right}</div>`;
+  }).join('');
+  wrap.innerHTML = `<div>${leftItems}</div><div>${rightItems}</div>`;
+  document.getElementById('d2MatchResult').textContent = '';
+}
+function d2MatchLeft(el) {
+  if (el.classList.contains('matched')) return;
+  document.querySelectorAll('#d2MatchWrap .match-left-item').forEach(e => e.classList.remove('sel'));
+  d2MatchSel.left = el; el.classList.add('sel'); tryD2Match();
+}
+function d2MatchRight(el) {
+  if (el.classList.contains('matched')) return;
+  document.querySelectorAll('#d2MatchWrap .match-right-item').forEach(e => e.classList.remove('sel'));
+  d2MatchSel.right = el; el.classList.add('sel'); tryD2Match();
+}
+function tryD2Match() {
+  if (!d2MatchSel.left || !d2MatchSel.right) return;
+  const correct = d2MatchSel.left.dataset.idx === d2MatchSel.right.dataset.idx;
+  if (correct) {
+    d2MatchSel.left.classList.add('matched'); d2MatchSel.right.classList.add('matched');
+    d2MatchedCount++;
+    if (d2MatchedCount === d2MatchData.length) { document.getElementById('d2MatchResult').textContent = '🎉 All matched correctly!'; confetti(); addPoints(20); }
+  } else {
+    d2MatchSel.left.classList.add('shk'); d2MatchSel.right.classList.add('shk');
+    setTimeout(() => { d2MatchSel.left.classList.remove('shk','sel'); d2MatchSel.right.classList.remove('shk','sel'); }, 500);
+  }
+  d2MatchSel = {left: null, right: null};
+}
+buildD2Match();
+
+// ══════════════════════════════ DAY 4 SCENARIOS ══════════════════════════════
+const d4Scenarios = [
+  {q:'Anika, your classmate, receives a DM on Instagram from someone claiming to be a famous Bollywood actor who wants to feature her in a music video. They ask her to share her phone number and home address. What should she do?', opts:['Share the details — it might be real!', 'Only share phone number, not address', 'Do not respond and report the account as suspicious', 'Ask friends if it seems real first'], ans:2, exp:'Verified celebrities never directly DM strangers requesting personal info. This is a classic catfishing/fraud attempt. Always report suspicious accounts.'},
+  {q:'Ravi is playing an online game when another player starts calling him names, threatening him, and saying he\'ll "hack his account." This has been happening for 3 days. What is this called, and what should Ravi do?', opts:['It\'s normal gaming — ignore it', 'This is cyberbullying — screenshot evidence, block, report, and tell a trusted adult', 'Challenge the person to a game duel', 'Share his own threats back'], ans:1, exp:'Repeated online harassment is cyberbullying, which is a crime in India under the IT Act. Screenshot all evidence before blocking. Report to the game platform and tell your parents or school counsellor.'},
+  {q:'Shreya is on Instagram and her account is set to "Public." A stranger keeps commenting on her photos and has started DMing her, asking to be friends. The stranger says he\'s 15 years old. What should Shreya do?', opts:['Befriend him — he says he\'s 15 too', 'Switch her account to PRIVATE and do not respond to the DM', 'Share a few photos to be friendly', 'Give her WhatsApp to chat more easily'], ans:1, exp:'Online strangers may not be who they claim to be. Setting your account to Private ensures only approved friends see your content. Never engage with unknown people who approach you online.'},
+  {q:'Amit\'s friend shares a link saying "Click here for FREE Robux — only for 1 hour!" What should Amit do?', opts:['Click quickly before the offer expires', 'Share it with more friends to help them', 'Ignore it — free in-game currency offers are always scams', 'Click but don\'t enter password'], ans:2, exp:'Free Robux/V-Bucks/UC offers through third-party links are 100% scams. They steal your game account, personal data, or install malware on your device. Real in-game currency is only sold through official stores.'},
+];
+function buildD4Scenarios() {
+  const c = document.getElementById('d4ScenarioContainer'); c.innerHTML = '';
+  d4Scenarios.forEach((sc, i) => {
+    const div = document.createElement('div'); div.className = 'scenario-card';
+    let opts = sc.opts.map((o, j) => `<div class="scenario-opt" onclick="pickD4Scenario(this,${j},${i})">${String.fromCharCode(65+j)}. ${o}</div>`).join('');
+    div.innerHTML = `<div class="scenario-q"><span class="sq-num">Q${i+1}</span>${sc.q}</div><div class="scenario-choices">${opts}</div><div class="scenario-explain" id="d4sce-${i}"></div>`;
+    c.appendChild(div);
+  });
+}
+function pickD4Scenario(el, choice, idx) {
+  document.getElementById('d4ScenarioContainer').children[idx].querySelectorAll('.scenario-opt').forEach(o => o.style.pointerEvents = 'none');
+  const correct = choice === d4Scenarios[idx].ans;
+  el.classList.add(correct ? 'picked-right' : 'picked-wrong');
+  if (!correct) document.getElementById('d4ScenarioContainer').children[idx].querySelectorAll('.scenario-opt')[d4Scenarios[idx].ans].classList.add('show-right');
+  const exp = document.getElementById('d4sce-' + idx);
+  exp.textContent = (correct ? '✅ ' : '💡 ') + d4Scenarios[idx].exp; exp.classList.add('show');
+  if (correct) addPoints(10);
+}
+buildD4Scenarios();
+
+// ══════════════════════════════ DAY 4 WORD SCRAMBLE ══════════════════════════════
+const d4ScrambleWords = [
+  {word:'PHISHING', hint:'Fake messages/emails designed to steal your information'},
+  {word:'MALWARE', hint:'Harmful software that damages or steals from your device'},
+  {word:'PASSWORD', hint:'Secret code to protect your accounts'},
+  {word:'FIREWALL', hint:'Security system that blocks unauthorized network access'},
+  {word:'CATFISH', hint:'Creating a fake online identity to deceive someone'},
+  {word:'ENCRYPT', hint:'Scrambling data so only authorized people can read it'},
+  {word:'KEYLOGGER', hint:'Software that secretly records everything you type'},
+  {word:'HELPLINE', hint:'Emergency contact service — India\'s cyber crime number is 1930'},
+];
+let d4ScrIdx = 0, d4ScrScore = 0;
+function shuffleStr(s) { return s.split('').sort(() => Math.random() - 0.5).join(''); }
+function showD4Scramble() {
+  if (d4ScrIdx >= d4ScrambleWords.length) {
+    document.getElementById('d4scrWord').textContent = '🎉';
+    document.getElementById('d4scrHint').textContent = `All done! Score: ${d4ScrScore}/${d4ScrambleWords.length}`;
+    document.getElementById('d4scrProgress').textContent = 'Complete!';
+    confetti(); addPoints(d4ScrScore * 5);
+    return;
+  }
+  const w = d4ScrambleWords[d4ScrIdx];
+  let sc = shuffleStr(w.word); while (sc === w.word) sc = shuffleStr(w.word);
+  document.getElementById('d4scrWord').textContent = sc;
+  document.getElementById('d4scrHint').textContent = '💡 ' + w.hint;
+  document.getElementById('d4scrInput').value = '';
+  document.getElementById('d4scrMsg').className = 'scr-msg'; document.getElementById('d4scrMsg').textContent = '';
+  document.getElementById('d4scrProgress').textContent = `Word ${d4ScrIdx+1} of ${d4ScrambleWords.length}`;
+}
+function checkD4Scramble() {
+  const val = document.getElementById('d4scrInput').value.trim().toUpperCase();
+  const ans = d4ScrambleWords[d4ScrIdx].word;
+  if (val === ans) {
+    d4ScrScore++; document.getElementById('d4scrScore').textContent = 'Score: ' + d4ScrScore;
+    document.getElementById('d4scrMsg').className = 'scr-msg ok'; document.getElementById('d4scrMsg').textContent = '🎉 Correct! ' + ans;
+    setTimeout(() => { d4ScrIdx++; showD4Scramble(); }, 1500);
+  } else { document.getElementById('d4scrMsg').className = 'scr-msg no'; document.getElementById('d4scrMsg').textContent = '❌ Try again!'; }
+}
+function revealD4Scramble() { document.getElementById('d4scrMsg').className = 'scr-msg rev'; document.getElementById('d4scrMsg').textContent = '👁 Answer: ' + d4ScrambleWords[d4ScrIdx].word; }
+function nextD4Scramble() { d4ScrIdx++; showD4Scramble(); }
+document.addEventListener('DOMContentLoaded', () => {
+  showD4Scramble();
+  document.getElementById('d4scrInput').addEventListener('keydown', e => { if (e.key === 'Enter') checkD4Scramble(); });
+});
+
+// ══════════════════════════════ QUIZ ENGINE ══════════════════════════════
+function buildQuiz(prefix, questions, nextFn, unlockFn) {
+  const state = { idx: 0, score: 0, answered: false, results: [] };
+  return {
+    state,
+    init() {
+      state.idx = 0; state.score = 0; state.answered = false; state.results = [];
+      document.getElementById(prefix + 'qScoreScreen').style.display = 'none';
+      document.getElementById(prefix + 'quizMain').style.display = 'block';
+      this.renderQ(); this.renderDots();
+    },
+    renderQ() {
+      const q = questions[state.idx];
+      document.getElementById(prefix + 'qLvl').textContent = q.lvl;
+      document.getElementById(prefix + 'qEmo').textContent = q.e;
+      document.getElementById(prefix + 'qTxt').textContent = q.q;
+      document.getElementById(prefix + 'qCounter').textContent = 'Q ' + (state.idx+1) + ' / ' + questions.length;
+      document.getElementById(prefix + 'qBar').style.width = (state.idx / questions.length * 100) + '%';
+      const og = document.getElementById(prefix + 'qOpts'); og.innerHTML = '';
+      q.opts.forEach((o, i) => {
+        const b = document.createElement('button'); b.className = 'opt-btn';
+        b.innerHTML = `<span class="opt-icon">${['🅐','🅑','🅒','🅓'][i]}</span>${o}`;
+        b.onclick = () => this.ansQ(i, b); og.appendChild(b);
+      });
+      document.getElementById(prefix + 'qFeed').className = 'q-feedback';
+      document.getElementById(prefix + 'qNextBtn').style.display = 'none'; state.answered = false;
+    },
+    renderDots() {
+      const dr = document.getElementById(prefix + 'qdots'); dr.innerHTML = '';
+      questions.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'q-dot' + (i === state.idx ? ' curr' : i < state.idx ? (state.results[i] ? ' ok' : ' no') : '');
+        dr.appendChild(d);
+      });
+    },
+    ansQ(choice, btn) {
+      if (state.answered) return; state.answered = true;
+      const q = questions[state.idx];
+      document.querySelectorAll('#' + prefix + 'qOpts .opt-btn').forEach(b => b.disabled = true);
+      const correct = choice === q.ans;
+      if (correct) { state.score++; state.results.push(true); btn.classList.add('right'); }
+      else { state.results.push(false); btn.classList.add('wrong'); document.querySelectorAll('#' + prefix + 'qOpts .opt-btn')[q.ans].classList.add('right'); }
+      document.getElementById(prefix + 'qScoreBadge').textContent = '⭐ ' + state.score;
+      const fb = document.getElementById(prefix + 'qFeed');
+      fb.className = 'q-feedback show ' + (correct ? 'ok' : 'no');
+      fb.textContent = (correct ? '⭐ Correct! ' : '❌ Not quite! ') + q.ex;
+      document.getElementById(prefix + 'qNextBtn').style.display = 'block'; this.renderDots();
+    },
+    next() {
+      state.idx++;
+      if (state.idx >= questions.length) this.showScore();
+      else { this.renderQ(); this.renderDots(); }
+    },
+    showScore() {
+      document.getElementById(prefix + 'quizMain').style.display = 'none';
+      document.getElementById(prefix + 'qScoreScreen').style.display = 'block';
+      document.getElementById(prefix + 'sBig').textContent = state.score;
+      const msgs = ['Keep practising! 💪', 'You\'re learning! 📖', 'Getting there! 🌟', 'Great work! 🎉', 'Excellent! 🏆', 'PERFECT! 🛡️✨'];
+      document.getElementById(prefix + 'sMsg').textContent = msgs[Math.min(Math.floor(state.score/2), 5)];
+      document.getElementById(prefix + 'sStars').textContent = state.score >= 10 ? '⭐⭐⭐' : state.score >= 6 ? '⭐⭐' : '⭐';
+      document.getElementById(prefix + 'sTrophy').textContent = state.score >= 10 ? '🏆' : state.score >= 6 ? '🎖️' : '📚';
+      document.getElementById(prefix + 'qBar').style.width = '100%';
+      addPoints(state.score * 5);
+      if (state.score >= 10) confetti();
+      if (prefix === 'd5' && state.score >= 9) {
+        document.getElementById('d5certMsg').textContent = '🎉 You scored ' + Math.round(state.score/12*100) + '%! Certificate Unlocked!';
+        document.getElementById('d5certBtn').style.display = 'inline-block';
+        document.getElementById('certScore').textContent = '🏆 Score: ' + state.score + ' / 12 (' + Math.round(state.score/12*100) + '%)';
+      }
+    }
+  };
+}
+
+// QUIZ DATA
+const d1Questions = [
+  {lvl:'⭐ Easy', q:'What is a Digital Footprint?', e:'👣', opts:['Your shoe size stored online','All the data you leave when using internet','A fingerprint scanner','Your device\'s IP address'], ans:1, ex:'Every website visited, post made and app used creates your digital footprint!'},
+  {lvl:'⭐ Easy', q:'Which of these is personal data you should NEVER share online?', e:'🔒', opts:['Your favourite colour','Your home address','Your favourite subject','Your country name'], ans:1, ex:'Home address, phone number, school name and ID details are personal data — never share these online!'},
+  {lvl:'⭐ Easy', q:'What does "cyber safety" mean?', e:'🛡️', opts:['Driving safely on roads','Protecting yourself online','Eating healthy food','Exercising every day'], ans:1, ex:'Cyber safety means protecting yourself, your data and your devices when using the internet.'},
+  {lvl:'⭐ Easy', q:'What should you do if a pop-up says "You WON a free iPhone! Click here!"?', e:'🚨', opts:['Click it immediately!','Share it with friends','Close it — it\'s a scam','Call the number provided'], ans:2, ex:'Prize pop-ups are always scams. Close them immediately and never click or call!'},
+  {lvl:'⭐⭐ Medium', q:'Encryption means...', e:'🔐', opts:['Deleting your files','Scrambling data so only authorized people can read it','Saving a backup of files','Sharing files with friends'], ans:1, ex:'Encrypted websites use HTTPS and a padlock icon. Encryption keeps your data safe during transfer.'},
+  {lvl:'⭐⭐ Medium', q:'A friend asks for your account password to help you. What do you do?', e:'🤔', opts:['Share it — friends can be trusted','Change it after sharing','Never share your password with anyone, even friends','Only share the last 4 digits'], ans:2, ex:'Never share passwords with ANYONE — not even best friends. Your password is private, always.'},
+  {lvl:'⭐⭐ Medium', q:'Which website is SAFER to use?', e:'🌐', opts:['http://mybank.co.in','https://mybank.co.in','http://mybank123.xyz','www.mybank-login.net'], ans:1, ex:'"https://" (with the S) and a padlock icon means the website is encrypted and more secure.'},
+  {lvl:'⭐⭐ Medium', q:'If you accidentally click a suspicious link, what should you do FIRST?', e:'⚠️', opts:['Wait to see what happens','Close the browser, run antivirus, tell parents','Share it with friends to warn them','Delete your social media account'], ans:1, ex:'Close the browser immediately, run a security scan, and tell a trusted adult.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is "social engineering" in cybercrime?', e:'🕵️', opts:['Building social media apps','Manipulating people to reveal confidential info','Engineering robots for social tasks','Creating social media profiles'], ans:1, ex:'Social engineering tricks people psychologically into revealing passwords or personal data.'},
+  {lvl:'⭐⭐⭐ Hard', q:'Which is NOT a way to protect your digital footprint?', e:'🔍', opts:['Using private browsing mode','Reviewing app permissions','Posting more content daily to show you\'re active','Logging out of accounts'], ans:2, ex:'Posting more actually INCREASES your footprint. Private browsing, reviewing permissions and logging out all REDUCE it.'},
+  {lvl:'⭐⭐⭐ Hard', q:'Under India\'s IT Act, cyberbullying is...', e:'⚖️', opts:['Not illegal — it\'s just online talk','A minor offence with ₹100 fine','A serious crime that can lead to imprisonment','Only illegal for adults'], ans:2, ex:'Cyberbullying, online harassment, and defamation are criminal offences under India\'s IT Act 2000 with severe penalties.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What does HTTPS stand for?', e:'💻', opts:['HyperText Transfer Protocol Secure','High Technology Privacy System','Home Technology Transfer Portal','HyperText Total Privacy Service'], ans:0, ex:'HTTPS = HyperText Transfer Protocol Secure. The "S" means your connection to the website is encrypted!'},
+];
+
+const d2Questions = [
+  {lvl:'⭐ Easy', q:'How long should a strong password be?', e:'🔑', opts:['3-4 characters','5-6 characters','At least 8 characters','Exactly 12 characters'], ans:2, ex:'Passwords should have at least 8 characters — longer is stronger!'},
+  {lvl:'⭐ Easy', q:'Which is an example of a STRONG password?', e:'💪', opts:['password123','rohit2010','R@nd0m!X#9','myname'], ans:2, ex:'Strong passwords mix uppercase, lowercase, numbers and symbols like R@nd0m!X#9'},
+  {lvl:'⭐ Easy', q:'What does 2FA stand for?', e:'📱', opts:['Two Factor Authentication','Two For All','Twenty Fifty Apps','Two Fraud Alerts'], ans:0, ex:'2FA = Two Factor Authentication — an extra security code sent to your phone after your password.'},
+  {lvl:'⭐ Easy', q:'Should you share your password with your best friend?', e:'🤝', opts:['Yes, best friends are trustworthy','Only if they promise not to tell','Never — passwords must always remain private','Only on their birthday'], ans:2, ex:'Never share your password with anyone. Even trustworthy people can accidentally expose your information.'},
+  {lvl:'⭐⭐ Medium', q:'What is a Brute Force attack?', e:'💀', opts:['Physically breaking a computer','Trying thousands of password combinations automatically','Sending fake emails','Hacking via Bluetooth'], ans:1, ex:'Brute force attacks use software to automatically try millions of password combinations rapidly.'},
+  {lvl:'⭐⭐ Medium', q:'If you use "2FA", even if a hacker steals your password, they still need...', e:'🔐', opts:['Nothing — they have full access','Your date of birth','The verification code sent to YOUR phone','Your email address'], ans:2, ex:'2FA means hackers need physical access to your phone to get the verification code. This stops most attacks!'},
+  {lvl:'⭐⭐ Medium', q:'What is "shoulder surfing"?', e:'👀', opts:['Surfing on social media','Someone watching you type your password','Hacking via WiFi','Stealing your phone'], ans:1, ex:'Shoulder surfing is when someone physically watches you type your password or PIN. Always cover the keypad!'},
+  {lvl:'⭐⭐ Medium', q:'Which password would be HARDEST to hack?', e:'🧠', opts:['ilovecricket','Ind!a@C?W#2024Cup','cricket11','iloveindia123'], ans:1, ex:'Random combinations of uppercase, lowercase, numbers and symbols with no real words are hardest to crack.'},
+  {lvl:'⭐⭐⭐ Hard', q:'A website asks you to create a password. Which password policy is MOST secure?', e:'🔒', opts:['Minimum 4 characters, any type','Minimum 8 characters with special symbols','Only numbers allowed','Saved automatically by the website'], ans:1, ex:'Strong policy requires minimum 8+ characters including uppercase, lowercase, numbers and symbols.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is a Password Manager?', e:'🗂️', opts:['A person who manages office passwords','Software that securely stores all your passwords','A book to write passwords in','Your browser\'s history'], ans:1, ex:'Password managers like LastPass, Bitwarden generate and securely store unique strong passwords for each site.'},
+  {lvl:'⭐⭐⭐ Hard', q:'If you get a message: "Your bank account is hacked — share OTP to verify." What do you do?', e:'⚠️', opts:['Share OTP immediately to protect account','Call the bank on number given in SMS','Delete the message — banks NEVER ask for OTP via message','Change your password first, then share OTP'], ans:2, ex:'Banks NEVER ask for OTP via SMS or phone. Delete the message and call the bank\'s official number from their website.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is a "Keylogger"?', e:'⌨️', opts:['A key to unlock computers','Malware recording every keystroke including passwords','A type of keyboard','A program to create passwords'], ans:1, ex:'Keyloggers are malicious software that secretly record everything you type, including passwords and card numbers.'},
+];
+
+const d3Questions = [
+  {lvl:'⭐ Easy', q:'What is "Phishing"?', e:'🎣', opts:['Catching fish as a hobby','Fake messages to steal your information','A type of cooking fish','An antivirus program'], ans:1, ex:'Phishing = fake messages/emails/calls that trick you into revealing passwords or personal information.'},
+  {lvl:'⭐ Easy', q:'Which URL is SAFER to use for SBI banking?', e:'🏦', opts:['sbi-banking.xyz','sbi-login.in','onlinesbi.sbi','sbi-secure-login.com'], ans:2, ex:'Official SBI website is onlinesbi.sbi — always verify the exact domain before entering banking details.'},
+  {lvl:'⭐ Easy', q:'A message says "Your electricity will be cut in 2 hours — pay NOW." What do you do?', e:'⚡', opts:['Pay immediately on the given number','Call back the WhatsApp number','Ignore and visit the official electricity office/website','Share with family to warn them'], ans:2, ex:'Electricity companies contact via official channels, not WhatsApp. Always verify at the official website.'},
+  {lvl:'⭐ Easy', q:'What does "Smishing" mean?', e:'📱', opts:['Smiling and phishing','Phishing via SMS messages','A type of social media','Smart phishing apps'], ans:1, ex:'Smishing = SMS + Phishing. Fake text messages designed to steal your information or money.'},
+  {lvl:'⭐⭐ Medium', q:'A government scholarship email asks for ₹500 registration fee. What do you do?', e:'🎓', opts:['Pay the ₹500 quickly before deadline','Delete it — real government scholarships NEVER charge fees','Ask your teacher if it\'s real','Share it with classmates'], ans:1, ex:'Government scholarships at scholarship.gov.in are FREE. Any scholarship asking for a fee is a scam.'},
+  {lvl:'⭐⭐ Medium', q:'What red flag indicates an email might be phishing?', e:'🚩', opts:['Having a profile picture','Using "Dear Customer" instead of your name','Having a long subject line','Sending in the morning'], ans:1, ex:'"Dear Customer" instead of your actual name shows the sender doesn\'t know you — a classic phishing sign.'},
+  {lvl:'⭐⭐ Medium', q:'What should you do if you receive a suspicious link on WhatsApp?', e:'💬', opts:['Click it to check if it\'s safe','Forward it to friends as a warning','Do not click — delete and report the number','Copy the link to a browser'], ans:2, ex:'Never click suspicious links. Delete the message and report the number to cybercrime.gov.in or call 1930.'},
+  {lvl:'⭐⭐ Medium', q:'A "Vishing" attack is...', e:'📞', opts:['Voice phishing — fake phone calls to steal info','Video phishing on YouTube','Visiting fake websites','Phishing via Viber app'], ans:0, ex:'Vishing = Voice Phishing. Criminals call pretending to be from banks, government, or tech support to steal information.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is a "fake courier delivery" scam?', e:'📦', opts:['Sending fake packages','Calling to say a parcel is held — asking for Customs fee payment','Selling fake luxury items online','Delivering wrong items'], ans:1, ex:'Scammers claim a parcel is held in customs and demand a small payment. The parcel doesn\'t exist and your money is stolen.'},
+  {lvl:'⭐⭐⭐ Hard', q:'To verify if an email link is safe without clicking, you should...', e:'🔗', opts:['Click it quickly and check','Hover your mouse over the link to see the actual URL','Forward to a tech-savvy friend','Type the URL from memory'], ans:1, ex:'Hovering over a link reveals the actual URL in the browser\'s status bar — you can see if it matches the displayed text.'},
+  {lvl:'⭐⭐⭐ Hard', q:'India\'s official cyber crime reporting website is...', e:'🌐', opts:['fraudreport.in','cybercrime.gov.in','reportscam.co.in','digitalindia.fraud.in'], ans:1, ex:'cybercrime.gov.in is India\'s official portal to report cyber fraud, phishing, and online harassment.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is a "Business Email Compromise" (BEC) scam?', e:'💼', opts:['Hacking a business website','Fake emails pretending to be company executives to authorize fraudulent payments','Breaking into company offices','Stealing company computers'], ans:1, ex:'BEC scams impersonate CEOs or managers via email to trick employees into transferring money. India loses ₹100s of crores annually to this.'},
+];
+
+const d4Questions = [
+  {lvl:'⭐ Easy', q:'What is "Catfishing" online?', e:'🐱', opts:['Fishing for real cats online','Creating a fake identity to deceive someone','A type of phishing attack','Sharing cat photos online'], ans:1, ex:'Catfishing = creating a fake online identity (stolen photos, fake name) to deceive others, often for money or manipulation.'},
+  {lvl:'⭐ Easy', q:'Cyberbullying includes...', e:'😢', opts:['Playing games with friends online','Sending mean messages or threatening someone online','Commenting positively on posts','Sharing funny videos'], ans:1, ex:'Cyberbullying includes repeated mean messages, threats, spreading rumours, sharing embarrassing photos, and exclusion online.'},
+  {lvl:'⭐ Easy', q:'Free gaming currency (free UC, free V-Bucks) websites are...', e:'🎮', opts:['Genuinely free gifts from game companies','Always scams that steal your account or data','Discount offers for loyal players','Available only in other countries'], ans:1, ex:'Free in-game currency websites are 100% scams. They either steal your account credentials or install malware.'},
+  {lvl:'⭐ Easy', q:'If someone online asks to meet you in person, you should...', e:'⚠️', opts:['Meet them alone in a public place','Never meet without telling parents/guardian and having adult supervision','Give your address for them to visit','Send a photo first to verify'], ans:1, ex:'Never meet anyone from online without informing parents and having adult supervision. This applies even to people you\'ve chatted with for months.'},
+  {lvl:'⭐⭐ Medium', q:'Your online game "friend" asks you to buy a Google Play gift card and share the code. What do you do?', e:'🎁', opts:['Buy it — friends help each other','Share only half the code as a test','Refuse — this is a classic gift card scam','Ask them why they need it first'], ans:2, ex:'Gift card scams are extremely common. Scammers build fake online "friendships" and then ask for gift card codes as gifts or "loans."'},
+  {lvl:'⭐⭐ Medium', q:'What should you do if you are being cyberbullied?', e:'🛡️', opts:['Respond angrily to defend yourself','Screenshot evidence, block the bully, tell a trusted adult, report to platform','Delete your account and start over','Ignore it — it will stop on its own'], ans:1, ex:'Document evidence before blocking. Report to the platform AND tell a trusted adult. In serious cases, file a complaint at cybercrime.gov.in.'},
+  {lvl:'⭐⭐ Medium', q:'A stranger sends a friend request claiming to be your classmate\'s sibling. You should...', e:'👤', opts:['Accept — they\'re connected to someone you know','Accept and share your school name to verify','Reject or ignore — verify with your classmate in person first','Check their profile photos first then accept'], ans:2, ex:'Always verify new connections in person. Fake profiles often use mutual connections as bait to establish false trust.'},
+  {lvl:'⭐⭐ Medium', q:'What is "location sharing" risk in online games?', e:'📍', opts:['Your game score is shared globally','Sharing your real-world location with strangers who can use it to find you','Your internet speed being shared','Your game preferences being stolen'], ans:1, ex:'Sharing location in games or social media with strangers reveals where you live. Always turn off location sharing for public profiles.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is "grooming" in the context of online safety?', e:'⚠️', opts:['Someone helping you look nice online','A criminal slowly building trust with a child to exploit them','Teaching good manners online','An AI model learning your preferences'], ans:1, ex:'Online grooming is when an adult builds a fake trusting relationship with a child online to eventually exploit them. Report immediately to cybercrime.gov.in.'},
+  {lvl:'⭐⭐⭐ Hard', q:'Which is the BEST privacy setting for a student\'s social media?', e:'🔒', opts:['Public — to gain more followers','Private — only approved followers can see posts','Friends of friends — to grow the network','No setting needed if posts are positive'], ans:1, ex:'Private accounts ensure only people you personally approve can see your content, dramatically reducing exposure to strangers.'},
+  {lvl:'⭐⭐⭐ Hard', q:'Under India\'s IT Act 2000, Section 66E covers...', e:'⚖️', opts:['Password theft','Violation of privacy by capturing/publishing private images without consent','Banking fraud','Spam emails'], ans:1, ex:'Section 66E: Violation of privacy. Publishing private images without consent can result in 3 years imprisonment or ₹2 lakh fine.'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is a "Fake Job Offer" scam targeting Indian youth?', e:'💼', opts:['Fake job websites with no real openings','Offering WFH jobs but asking for advance payment as "registration" or "training fee"','Giving poorly paid jobs','Hiring people for illegal activities'], ans:1, ex:'Fake job scams advertise WFH/part-time jobs and ask for ₹500-2000 as registration fees. After payment, they disappear. Jobs that ask for upfront fees are always scams.'},
+];
+
+const d5Questions = [
+  {lvl:'⭐ Easy', q:'What does OTP stand for?', e:'📲', opts:['Optional Transfer Payment','One Time Password','Online Transfer Protocol','Official Transaction PIN'], ans:1, ex:'OTP = One Time Password — a single-use code sent to your phone for verification. NEVER share it with anyone!'},
+  {lvl:'⭐ Easy', q:'India\'s National Cyber Crime Helpline number is...', e:'📞', opts:['100','1930','112','155260'], ans:1, ex:'1930 is India\'s dedicated cyber crime helpline. Call immediately if scammed — especially within the first hour!'},
+  {lvl:'⭐ Easy', q:'To RECEIVE money via UPI, you need to...', e:'💸', opts:['Scan the sender\'s QR code','Enter your UPI PIN','Simply share your UPI ID or phone number','Approve a collect request from them'], ans:2, ex:'To receive money: just share your phone number or UPI ID. You NEVER scan or enter PIN to receive!'},
+  {lvl:'⭐ Easy', q:'A bank employee calls asking for your OTP. You should...', e:'📞', opts:['Share it to protect your account','Ask for their employee ID first','Hang up immediately — banks NEVER ask for OTP','Call back to verify before sharing'], ans:2, ex:'Bank employees are strictly trained to NEVER ask for OTP. This is always a scam. Hang up and call the official bank number.'},
+  {lvl:'⭐⭐ Medium', q:'A "Collect Request" on PhonePe means...', e:'💳', opts:['Money being deposited into your account','Money being requested FROM your account','A bank statement request','A refund being processed'], ans:1, ex:'Approving a Collect Request means MONEY LEAVES your account. Scammers misuse this claiming you\'ll "receive" money!'},
+  {lvl:'⭐⭐ Medium', q:'What should you do first if ₹10,000 is fraudulently transferred from your account?', e:'🚨', opts:['Post about it on social media','Wait to see if money returns','Call 1930 and your bank within the first hour','File an FIR at the nearest police station first'], ans:2, ex:'Call 1930 AND your bank IMMEDIATELY — within the first hour, authorities can freeze the fraudster\'s account!'},
+  {lvl:'⭐⭐ Medium', q:'QR Code scam works because victims think...', e:'📷', opts:['QR codes are always safe','Scanning a QR code will deposit money into their account','QR codes are government approved','Scanning is faster than online transfer'], ans:1, ex:'Scanning a QR code SENDS money from your account. You never need to scan anything to RECEIVE money via UPI!'},
+  {lvl:'⭐⭐ Medium', q:'What is a UPI "Fraud Request" that scammers use?', e:'⚠️', opts:['A genuine UPI feature to report fraud','Scammers send a payment request misrepresenting it as incoming money','A two-step verification request','A bank security notification'], ans:1, ex:'Scammers send Collect Requests saying "I\'m sending you money — approve this." Approving SENDS your money. Always reject unknown collect requests!'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is the India Cyber Crime Reporting Portal website?', e:'🌐', opts:['reportcrime.india.gov','cybercrime.gov.in','fraudreport.gov.in','safetyindia.gov.in'], ans:1, ex:'cybercrime.gov.in is the official Indian government portal to report cyber fraud, phishing, and online harassment 24/7.'},
+  {lvl:'⭐⭐⭐ Hard', q:'If you receive a lottery message saying "You won ₹25 lakh in KBC" — this is...', e:'🎰', opts:['Possibly real — KBC does call winners randomly','Likely real if your name is mentioned','Always a scam — KBC is a TV show you must apply to','Real only if from Amitabh Bachchan\'s number'], ans:2, ex:'KBC lottery scams are rampant in India. KBC is a TV show — you cannot win without participating. All such messages are fraud.'},
+  {lvl:'⭐⭐⭐ Hard', q:'Under Section 66C of India\'s IT Act, identity theft carries a punishment of...', e:'⚖️', opts:['₹500 fine only','Warning letter','Up to 3 years imprisonment and ₹1 lakh fine','Community service'], ans:2, ex:'Section 66C: Identity theft punishment is up to 3 years imprisonment AND ₹1 lakh fine. Cybercrime is serious in India!'},
+  {lvl:'⭐⭐⭐ Hard', q:'What is the most important step to prevent UPI fraud?', e:'🛡️', opts:['Use only one UPI app','Never share your UPI PIN with anyone — not even "bank officials"','Enable fingerprint on UPI apps','Use UPI only for small amounts'], ans:1, ex:'Your UPI PIN is like a bank vault key — never share it with anyone. No legitimate person will ever ask for your PIN!'},
+];
+
+// Initialize quizzes
+const d1Quiz = buildQuiz('d1', d1Questions);
+const d2Quiz = buildQuiz('d2', d2Questions);
+const d3Quiz = buildQuiz('d3', d3Questions);
+const d4Quiz = buildQuiz('d4', d4Questions);
+const d5Quiz = buildQuiz('d5', d5Questions);
+
+function initD1Quiz() { d1Quiz.init(); }
+function initD2Quiz() { d2Quiz.init(); }
+function initD3Quiz() { d3Quiz.init(); }
+function initD4Quiz() { d4Quiz.init(); }
+function initD5Quiz() { d5Quiz.init(); }
+function d1nextQ() { d1Quiz.next(); }
+function d2nextQ() { d2Quiz.next(); }
+function d3nextQ() { d3Quiz.next(); }
+function d4nextQ() { d4Quiz.next(); }
+function d5nextQ() { d5Quiz.next(); }
+
+initD1Quiz(); initD2Quiz(); initD3Quiz(); initD4Quiz(); initD5Quiz();
+showD4Scramble();
+document.getElementById('d4scrInput').addEventListener('keydown', e => { if (e.key === 'Enter') checkD4Scramble(); });
+
+// ══════════════════════════════ DASHBOARD ══════════════════════════════
+function updateDashboard() {
+  document.getElementById('dashStreak').textContent = streak + '🔥';
+  document.getElementById('dashPoints').textContent = totalPoints + '⭐';
+  const daysUnlocked = unlockedDays.filter(Boolean).length;
+  document.getElementById('dashDays').textContent = Math.min(daysUnlocked, 5) + '/5';
+  const badges = ['🛡️ Safety Starter','🔐 Password Pro','🕵️ Scam Spotter','📱 Social Shield','💳 Fraud Fighter'];
+  const earnedBadges = badges.slice(0, Math.min(streak, 5));
+  document.getElementById('dashBadges').textContent = earnedBadges.length + '🏅';
+  const rack = document.getElementById('badgeRack');
+  rack.innerHTML = badges.map((b, i) => `<div class="badge-item ${i < earnedBadges.length ? 'earned' : 'locked'}">${b}</div>`).join('');
+  const dayLabels = ['🌐 Day 1: Internet Safety','🔑 Day 2: Password Safety','🎣 Day 3: Phishing','📱 Day 4: Social Media','💳 Day 5: Banking Fraud'];
+  const dayColors = ['var(--co-orange)','var(--co-teal)','var(--co-purple)','var(--co-green)','var(--co-red)'];
+  const dayBg = ['#FF6B1A','#00B4A6','#7B5EA7','#2DC653','#E63946'];
+  const container = document.getElementById('dayProgressBars');
+  container.innerHTML = dayLabels.map((lbl, i) => {
+    const pct = unlockedDays[i] ? (i < streak ? 100 : 20) : 0;
+    return `<div class="day-progress-row">
+      <div class="dp-icon" style="background:${dayBg[i]}20;color:${dayBg[i]};">${['🌐','🔑','🎣','📱','💳'][i]}</div>
+      <div class="dp-bar-wrap">
+        <div class="dp-label">${lbl}</div>
+        <div class="dp-bar"><div class="dp-bar-fill" style="width:${pct}%;background:${dayColors[i]};"></div></div>
+      </div>
+      <div class="dp-pct">${pct}%</div>
+    </div>`;
+  }).join('');
+  const score = Math.min(Math.round((totalPoints / 500) * 100), 100);
+  document.getElementById('cyberScore').textContent = score + '%';
+  document.getElementById('cyberScoreBar').style.width = score + '%';
+}
+
+// ══════════════════════════════ CERTIFICATE ══════════════════════════════
+function updateCertName() {
+  const name = document.getElementById('certNameInput').value || 'Your Name Here';
+  document.getElementById('certName').textContent = name;
+}
+function updateCertDate() {
+  const d = new Date();
+  document.getElementById('certDate').textContent = d.toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+  const id = 'NCSC-2025-' + Math.floor(100000 + Math.random() * 900000);
+  document.getElementById('certId').textContent = id;
+}function generateCert() {
+  var name = document.getElementById('certNameInput').value;
+  if (!name.trim()) { alert('Please enter your name first!'); return; }
+  document.getElementById('certName').textContent = name;
+  document.getElementById('certScore').textContent = 'Score: ' + totalPoints + ' pts';
+  var d = new Date();
+  document.getElementById('certDate').textContent = d.toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+  document.getElementById('certId').textContent = 'NCSC-' + d.getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
+  confetti();
+  document.getElementById('downloadCertBtn').style.display = 'inline-flex';
+}
+
+function downloadCert() {
+  var certEl = document.getElementById('certWrap');
+  var name = document.getElementById('certName').textContent || 'Student';
+  var printWin = window.open('', '_blank', 'width=900,height=700');
+  var certHTML = certEl.outerHTML;
+  printWin.document.write('<!DOCTYPE html><html><head>'
+    + '<meta charset="UTF-8">'
+    + '<title>Cyber Safety Certificate - ' + name + '</title>'
+    + '<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">'
+    + '<style>'
+    + '*{margin:0;padding:0;box-sizing:border-box;}'
+    + 'body{background:#fff;display:flex;justify-content:center;align-items:flex-start;padding:40px;font-family:Nunito,sans-serif;}'
+    + '.cert-wrap{width:720px;padding:40px;border:3px solid #6844A8;border-radius:20px;text-align:center;background:#fff;box-shadow:0 0 0 8px #f5f0ff,0 0 0 12px #6844A8;}'
+    + '.cert-name{font-family:"Fredoka One",cursive;font-size:2.2rem;color:#6844A8;margin:10px 0;}'
+    + '.cert-course{font-family:"Fredoka One",cursive;font-size:1.1rem;color:#FF6B1A;margin:8px 0;}'
+    + '.cert-score{font-size:0.95rem;font-weight:800;color:#1A2E4A;background:#f5f0ff;padding:7px 18px;border-radius:50px;display:inline-block;margin:10px 0;}'
+    + '.cert-badge-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0;}'
+    + '.cert-badge{background:linear-gradient(135deg,#FFD23F,#FFE570);border:1.5px solid #FF6B1A;border-radius:50px;padding:5px 12px;font-size:0.75rem;font-weight:800;color:#1A2E4A;}'
+    + '.cert-helpline{background:#E63946;color:#fff;border-radius:10px;padding:10px;margin:12px 0;font-weight:900;font-size:0.9rem;}'
+    + '.cert-tag{font-size:0.8rem;color:#64748B;margin:4px 0 10px;}'
+    + '.cert-id{font-size:0.65rem;color:#64748B;margin-top:10px;}'
+    + '@media print{body{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}}'
+    + '</style>'
+    + '</head><body>' + certHTML + '</body></html>');
+  printWin.document.close();
+  printWin.focus();
+  setTimeout(function(){ printWin.print(); }, 1000);
+}
+</script>
+</body>
+</html>
